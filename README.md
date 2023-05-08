@@ -58,4 +58,9 @@
   - 기능구현
   - README.md
 
+<br>
+<br>
 
+
+
+<img src = "./WhynotBLogo.png">
