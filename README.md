@@ -40,3 +40,22 @@
    - vscode
 - 개발언어
   - C언어 
+
+
+
+### 팀소개 및 팀원이 맡은 역할
+---
+- 정환
+  - Repo Owner
+  - WIKI 관리
+  - Menu Interface 구현
+  - FILE IO 구현
+- 현준
+  - 기능구현
+  - README.md
+  - 로고제작
+- 승희
+  - 기능구현
+  - README.md
+
+
