@@ -1,5 +1,5 @@
 # 2023OSS_TeamProject
-
+<img src = "./WhynotBLogo.png">
 ### WhyNotB의 주제
 ---
 메뉴 추천 기능이 있는 KIOSK
