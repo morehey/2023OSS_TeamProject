@@ -60,7 +60,3 @@
 
 <br>
 <br>
-
-
-
-<img src = "./WhynotBLogo.png">
