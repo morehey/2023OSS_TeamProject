@@ -18,7 +18,7 @@ int main(){
     int memberIs;//기존 회원인지 여부
     food *fo[SIZE];
     food *myFo[SIZE];
-    member *mem[MSIZE]
+    member *mem[MSIZE];
     
     count = loadFood(fo);
     index = count;
