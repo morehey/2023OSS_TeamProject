@@ -29,10 +29,10 @@ int main(){
         if (mode == 1){//메뉴판 CRUD
 
             while(1){
-                menu = selectMenuOne();//
+                menu = selectMenuOne();
                 if (menu == 0) break;
                 else if (menu == 1){
-                    if (count > 0 ) listFood(fo, index);//
+                    if (count > 0 ) listFood(fo, index);
                     else printf("데이터가 없습니다.\n");
                 }
                 else if (menu == 2){
@@ -40,7 +40,7 @@ int main(){
                     count += addFood(fo[index++]);
                 }
                 else if (menu == 3){
-                    int no = selectFoodNo(fo, index);//
+                    int no = selectFoodNo(fo, index);
                     if (no == 0){
                         printf("=> 취소됨\n");
                         continue;
@@ -48,7 +48,7 @@ int main(){
                     updateFood(fo[no-1]);
                 }
                 else if (menu == 4){
-                    int no = selectFoodNo(fo, index);//
+                    int no = selectFoodNo(fo, index);
                     if (no == 0){
                         printf("=> 취소됨!\n");
                         continue;
@@ -110,7 +110,7 @@ int main(){
                 myCnt += addFood(myFo[myIndex++]);
             }
             else if (menu == 4){
-                int no = selectFoodNo(myFo, myIndex);//
+                int no = selectFoodNo(myFo, myIndex);
                     if (no == 0){
                         printf("=> 취소됨\n");
                         continue;
@@ -118,7 +118,7 @@ int main(){
                     updateFood(myFo[no-1]);
             }
             else if (menu == 5){
-                int no = selectFoodNo(myFo, myIndex);//
+                int no = selectFoodNo(myFo, myIndex);
                     if (no == 0){
                         printf("=> 취소됨!\n");
                         continue;
