@@ -12,10 +12,10 @@ int loadData(food *f[]){//현준
 int selectMode(){//승희
     int menu;
     printf("mode 선택\n\n\n");
-    printf("1 : 메뉴판 CRUD");
-    printf("2 : 메뉴 고르기 도우미");
+    printf("1 : 메뉴판 CRUD\n");
+    printf("2 : 메뉴 고르기 도우미\n");
     printf("3 : 메뉴 주문하기\n");
-    printf("4 : 전체 프로그램 종료");
+    printf("4 : 전체 프로그램 종료\n");
     scanf("%d", &menu);
     return menu;
 }
