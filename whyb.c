@@ -18,11 +18,6 @@ int selectMode(){//승희
     printf("4 : 전체 프로그램 종료");
     scanf("%d", &menu);
     return menu;
-    //mode 1 : 메뉴판 수정 (메뉴판 CRUD)
-    //mode 2 : 메뉴 고르기 도우미
-    //mode 3 : 메뉴 주문하기
-    //mode 4 : 키오스크 종료
-    //return mode 번호
 }
 
 int selectFoodType(){//정환
