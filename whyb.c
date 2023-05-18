@@ -1,7 +1,43 @@
 #include <stdio.h>
 #include "whyb.h"
 
-int loadData(food *f[]){//현준
+int loadData(food *f[]){
+   const char* filename = "menu_data.txt";
+    FILE* file = fopen(filename, "r");
+
+    if (file != NULL) {
+        // 파일이 성공적으로 열렸을 때 실행되는 코드
+        // 데이터를 파일로부터 읽어와서 f 배열에 저장하는 작업을 수행하면 됩니다.
+
+        // 예시: 파일에서 데이터를 읽어와서 배열에 저장하는 과정
+        int dataCount = 0;
+        char line[256];
+        while (fgets(line, sizeof(line), file) != NULL) {
+            sscanf(line, "%39s %d %d %d %d %d", 
+                   f[dataCount]->name,
+                   &f[dataCount]->type,
+                   &f[dataCount]->price,
+                   &f[dataCount]->cnt,
+                   &f[dataCount]->del,
+                   &f[dataCount]->get
+                   );
+
+            dataCount++;
+        }
+
+        fclose(file);
+
+        printf("데이터 불러옴\n");
+
+        // 파일 안에 있던 데이터 개수 반환
+        return dataCount;
+    } else {
+        printf("데이터 없음\n");
+
+        // 데이터가 없으므로 0을 반환
+        return 0;
+    }
+
     //일치하는 메뉴판 데이터 불러오기
     //.txt파일을 찾아서 불러오면 "데이터 불러옴"
     //.txt파일을 못 찾으면 "데이터 없음"
