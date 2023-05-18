@@ -6,14 +6,14 @@ int loadData(food *f[]){
     FILE* file = fopen(filename, "r");
 
     if (file != NULL) {
-        // íŒŒì¼ì´ ì„±ê³µì ìœ¼ë¡œ ì—´ë ¸ì„ ë•Œ ì‹¤í–‰ë˜ëŠ” ì½”ë“œ
-        // ë°ì´í„°ë¥¼ íŒŒì¼ë¡œë¶€í„° ì½ì–´ì™€ì„œ f ë°°ì—´ì— ì €ìž¥í•˜ëŠ” ìž‘ì—…ì„ ìˆ˜í–‰í•˜ë©´ ë©ë‹ˆë‹¤.
+        // ÆÄÀÏÀÌ ¼º°øÀûÀ¸·Î ¿­·ÈÀ» ¶§ ½ÇÇàµÇ´Â ÄÚµå
+        // µ¥ÀÌÅÍ¸¦ ÆÄÀÏ·ÎºÎÅÍ ÀÐ¾î¿Í¼­ f ¹è¿­¿¡ ÀúÀåÇÏ´Â ÀÛ¾÷À» ¼öÇàÇÏ¸é µË´Ï´Ù.
 
-        // ì˜ˆì‹œ: íŒŒì¼ì—ì„œ ë°ì´í„°ë¥¼ ì½ì–´ì™€ì„œ ë°°ì—´ì— ì €ìž¥í•˜ëŠ” ê³¼ì •
+        // ¿¹½Ã: ÆÄÀÏ¿¡¼­ µ¥ÀÌÅÍ¸¦ ÀÐ¾î¿Í¼­ ¹è¿­¿¡ ÀúÀåÇÏ´Â °úÁ¤
         int dataCount = 0;
         char line[256];
         while (fgets(line, sizeof(line), file) != NULL) {
-            sscanf(line, "%39s %d %d %d %d %d", 
+            sscanf(line, "9s %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -27,172 +27,172 @@ int loadData(food *f[]){
 
         fclose(file);
 
-        printf("ë°ì´í„° ë¶ˆëŸ¬ì˜´\n");
+        printf("µ¥ÀÌÅÍ ºÒ·¯¿È\n");
 
-        // íŒŒì¼ ì•ˆì— ìžˆë˜ ë°ì´í„° ê°œìˆ˜ ë°˜í™˜
+        // ÆÄÀÏ ¾È¿¡ ÀÖ´ø µ¥ÀÌÅÍ °³¼ö ¹ÝÈ¯
         return dataCount;
     } else {
-        printf("ë°ì´í„° ì—†ìŒ\n");
+        printf("µ¥ÀÌÅÍ ¾øÀ½\n");
 
-        // ë°ì´í„°ê°€ ì—†ìœ¼ë¯€ë¡œ 0ì„ ë°˜í™˜
+        // µ¥ÀÌÅÍ°¡ ¾øÀ¸¹Ç·Î 0À» ¹ÝÈ¯
         return 0;
     }
 
-    //ì¼ì¹˜í•˜ëŠ” ë©”ë‰´íŒ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
-    //.txtíŒŒì¼ì„ ì°¾ì•„ì„œ ë¶ˆëŸ¬ì˜¤ë©´ "ë°ì´í„° ë¶ˆëŸ¬ì˜´"
-    //.txtíŒŒì¼ì„ ëª» ì°¾ìœ¼ë©´ "ë°ì´í„° ì—†ìŒ"
-    //return ê°’ì€ .txtíŒŒì¼ ì•ˆì— ìžˆì—ˆë˜ ë°ì´í„° ê°œìˆ˜ (ì—†ì—ˆìœ¼ë©´ 0 ë¦¬í„´)
+    //ÀÏÄ¡ÇÏ´Â ¸Þ´ºÆÇ µ¥ÀÌÅÍ ºÒ·¯¿À±â
+    //.txtÆÄÀÏÀ» Ã£¾Æ¼­ ºÒ·¯¿À¸é "µ¥ÀÌÅÍ ºÒ·¯¿È"
+    //.txtÆÄÀÏÀ» ¸ø Ã£À¸¸é "µ¥ÀÌÅÍ ¾øÀ½"
+    //return °ªÀº .txtÆÄÀÏ ¾È¿¡ ÀÖ¾ú´ø µ¥ÀÌÅÍ °³¼ö (¾ø¾úÀ¸¸é 0 ¸®ÅÏ)
 }
 
 
-int selectMode(){//ìŠ¹í¬
+int selectMode(){//½ÂÈñ
     int menu;
-    printf("mode ì„ íƒ\n\n\n");
-    printf("1 : ë©”ë‰´íŒ CRUD\n");
-    printf("2 : ë©”ë‰´ ê³ ë¥´ê¸° ë„ìš°ë¯¸\n");
-    printf("3 : ë©”ë‰´ ì£¼ë¬¸í•˜ê¸°\n");
-    printf("4 : ì „ì²´ í”„ë¡œê·¸ëž¨ ì¢…ë£Œ\n");
+    printf("mode ¼±ÅÃ\n\n\n");
+    printf("1 : ¸Þ´ºÆÇ CRUD\n");
+    printf("2 : ¸Þ´º °í¸£±â µµ¿ì¹Ì\n");
+    printf("3 : ¸Þ´º ÁÖ¹®ÇÏ±â\n");
+    printf("4 : ÀüÃ¼ ÇÁ·Î±×·¥ Á¾·á\n");
     scanf("%d", &menu);
     return menu;
 }
 
-int selectFoodType(){//ì •í™˜
+int selectFoodType(){//Á¤È¯
     //Type 1 : ~
     //Type 2 : ~
-    //return Type ë²ˆí˜¸
+    //return Type ¹øÈ£
 }
 
 
-int selectMenuOne(){//ì •í™˜
-    //ë©”ë‰´íŒ CRUDì—ì„œ ë©”ë‰´ ê³ ë¥´ê¸°
-    //menu 1 : ë©”ë‰´ ì¡°íšŒ
-    //menu 2 : ë©”ë‰´ ì¶”ê°€
-    //menu 3 : ë©”ë‰´ ìˆ˜ì •
-    //menu 4 : ë©”ë‰´ ì‚­ì œ
-    //menu 5 : ë©”ë‰´ ì°¾ê¸°
-    //menu 6 : ë©”ë‰´ ì €ìž¥
-    //menu 0 : ì¢…ë£Œ
-    //return ë©”ë‰´ ë²ˆí˜¸
+int selectMenuOne(){//Á¤È¯
+    //¸Þ´ºÆÇ CRUD¿¡¼­ ¸Þ´º °í¸£±â
+    //menu 1 : ¸Þ´º Á¶È¸
+    //menu 2 : ¸Þ´º Ãß°¡
+    //menu 3 : ¸Þ´º ¼öÁ¤
+    //menu 4 : ¸Þ´º »èÁ¦
+    //menu 5 : ¸Þ´º Ã£±â
+    //menu 6 : ¸Þ´º ÀúÀå
+    //menu 0 : Á¾·á
+    //return ¸Þ´º ¹øÈ£
 }
 
-int addFood(food *f){//ì •í™˜
-    //ë©”ë‰´ (ì´ë¦„, ê°€ê²©, íƒ€ìž…) ì¶”ê°€
-    //1 ë¦¬í„´
+int addFood(food *f){//Á¤È¯
+    //¸Þ´º (ÀÌ¸§, °¡°Ý, Å¸ÀÔ) Ãß°¡
+    //1 ¸®ÅÏ
 }
-void readFood(food f){//ì •í™˜
-    //í•´ë‹¹ ë©”ë‰´ì˜ ì´ë¦„, ê°€ê²© print
-}
-
-
-void listFood(food *f[], int count){//ì •í™˜
-    //selectFoodTypeìœ¼ë¡œ type ìž…ë ¥ë°›ê¸°
-    //ì‚­ì œë˜ì§€ ì•Šì€ ë²ˆí˜¸ì´ê³ , typeì´ ì¼ì¹˜í•˜ë©´ í•´ë‹¹ ë²ˆí˜¸ print
-    //readFoodí•¨ìˆ˜ì—ì„œ menu ì½ê¸°
+void readFood(food f){//Á¤È¯
+    //ÇØ´ç ¸Þ´ºÀÇ ÀÌ¸§, °¡°Ý print
 }
 
-int selectFoodNo(food *f[], int count){//ì •í™˜
-    //listFoodë¡œ ë²ˆí˜¸ì™€ ë©”ë‰´ë“¤ ë³´ì—¬ì£¼ê¸°
-    //ë©”ë‰´ ë²ˆí˜¸ ë¦¬í„´(ì·¨ì†Œ : 0)
+
+void listFood(food *f[], int count){//Á¤È¯
+    //selectFoodTypeÀ¸·Î type ÀÔ·Â¹Þ±â
+    //»èÁ¦µÇÁö ¾ÊÀº ¹øÈ£ÀÌ°í, typeÀÌ ÀÏÄ¡ÇÏ¸é ÇØ´ç ¹øÈ£ print
+    //readFoodÇÔ¼ö¿¡¼­ menu ÀÐ±â
 }
 
-void updateFood(food *f){//ì •í™˜
-    //ë©”ë‰´ ì´ë¦„, ê°€ê²©, íƒ€ìž… ì—…ë°ì´íŠ¸í•˜ê¸°
-    //1 ë¦¬í„´í•˜ê¸°
+int selectFoodNo(food *f[], int count){//Á¤È¯
+    //listFood·Î ¹øÈ£¿Í ¸Þ´ºµé º¸¿©ÁÖ±â
+    //¸Þ´º ¹øÈ£ ¸®ÅÏ(Ãë¼Ò : 0)
 }
 
-void deleteFood(food *f){//ì •í™˜
-    //delë¥¼ 0ìœ¼ë¡œ ë³€ê²½
+void updateFood(food *f){//Á¤È¯
+    //¸Þ´º ÀÌ¸§, °¡°Ý, Å¸ÀÔ ¾÷µ¥ÀÌÆ®ÇÏ±â
+    //1 ¸®ÅÏÇÏ±â
 }
 
-void searchName(food *f[], int count){//ì •í™˜
-    //ê²€ìƒ‰í•  ì´ë¦„ì„ ìž…ë ¥ë°›ê³  
-    //ì‚­ì œë˜ì§€ ì•Šê³ , ì´ë¦„ì´ ê°™ìœ¼ë©´ readFoodí•¨ìˆ˜ì—ì„œ menu ì½ê¸°
+void deleteFood(food *f){//Á¤È¯
+    //del¸¦ 0À¸·Î º¯°æ
 }
 
-void saveData(food *f[], int count){//ì •í™˜
-    //ì§€ê¸ˆê¹Œì§€ ì¶”ê°€, ìˆ˜ì •, ì‚­ì œ í•œ ë‚´ìš© .txtíŒŒì¼ì— ì €ìž¥í•˜ê¸°
-    //loadDataì—ì„œì˜ .txtíŒŒì¼ëª…ê³¼ ë™ì¼í•œ txtíŒŒì¼ì´ì—¬ì•¼ í•¨
+void searchName(food *f[], int count){//Á¤È¯
+    //°Ë»öÇÒ ÀÌ¸§À» ÀÔ·Â¹Þ°í 
+    //»èÁ¦µÇÁö ¾Ê°í, ÀÌ¸§ÀÌ °°À¸¸é readFoodÇÔ¼ö¿¡¼­ menu ÀÐ±â
 }
 
-int selectMenuTwo(){//í˜„ì¤€
-    //menu 1 : ëžœë¤ìœ¼ë¡œ ê³ ë¥´ê¸°
-    //menu 2 : ì›”ë“œì»µìœ¼ë¡œ ê³ ë¥´ê¸°
-    //menu 0 : ì¢…ë£Œ
+void saveData(food *f[], int count){//Á¤È¯
+    //Áö±Ý±îÁö Ãß°¡, ¼öÁ¤, »èÁ¦ ÇÑ ³»¿ë .txtÆÄÀÏ¿¡ ÀúÀåÇÏ±â
+    //loadData¿¡¼­ÀÇ .txtÆÄÀÏ¸í°ú µ¿ÀÏÇÑ txtÆÄÀÏÀÌ¿©¾ß ÇÔ
 }
 
-void randomPick(food *f[], int count){//í˜„ì¤€
-    //SelectFoodType í†µí•´ì„œ ì¢…ë¥˜ ì •í•˜ê¸°
-    //type ì¼ì¹˜, delete ì•ˆëœ ë©”ë‰´ ì¤‘ randomìœ¼ë¡œ ë‚˜ì˜¨ ê°’ print
+int selectMenuTwo(){//ÇöÁØ
+    //menu 1 : ·£´ýÀ¸·Î °í¸£±â
+    //menu 2 : ¿ùµåÄÅÀ¸·Î °í¸£±â
+    //menu 0 : Á¾·á
 }
 
-void worldCupPick(food *f[], int count){//í˜„ì¤€
-    //SelectFoodType í†µí•´ì„œ ì¢…ë¥˜ ì •í•˜ê¸°
-    //type ì¼ì¹˜, delete ì•ˆëœ ë©”ë‰´ ì¤‘ ì›”ë“œì»µ ì‹¤ì‹œ
-    //ìµœì¢… ë©”ë‰´ print
+void randomPick(food *f[], int count){//ÇöÁØ
+    //SelectFoodType ÅëÇØ¼­ Á¾·ù Á¤ÇÏ±â
+    //type ÀÏÄ¡, delete ¾ÈµÈ ¸Þ´º Áß randomÀ¸·Î ³ª¿Â °ª print
 }
 
-int selectMenuThree(){//ìŠ¹í¬
+void worldCupPick(food *f[], int count){//ÇöÁØ
+    //SelectFoodType ÅëÇØ¼­ Á¾·ù Á¤ÇÏ±â
+    //type ÀÏÄ¡, delete ¾ÈµÈ ¸Þ´º Áß ¿ùµåÄÅ ½Ç½Ã
+    //ÃÖÁ¾ ¸Þ´º print
+}
+
+int selectMenuThree(){//½ÂÈñ
 
     int menu;
-    printf("1 : ë©”ë‰´ ì¡°íšŒ\n");
-    printf("2 : ìž¥ë°”êµ¬ë‹ˆ ì¡°íšŒ\n");
-    printf("3 : ìž¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ì¶”ê°€\n");
-    printf("4 : ìž¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ìˆ˜ì •\n");
-    printf("5 : ìž¥ë°”êµ¬ë‹ˆ ë©”ëˆ„ ì‚­ì œ\n");
-    printf("6 : ìž¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ê²€ìƒ‰\n");
-    printf("7 : ìž¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ì €ìž¥\n");
-    printf("8 : ê²°ì œ ë° ì ë¦½\n");
-    printf("0 : ì¢…ë£Œ\n\n");
-    printf("=> ì„ íƒí•˜ì‹¤ ë©”ë‰´ë¥¼ ìž…ë ¥í•˜ì„¸ìš” : ");
+    printf("1 : ¸Þ´º Á¶È¸\n");
+    printf("2 : Àå¹Ù±¸´Ï Á¶È¸\n");
+    printf("3 : Àå¹Ù±¸´Ï ¸Þ´º Ãß°¡\n");
+    printf("4 : Àå¹Ù±¸´Ï ¸Þ´º ¼öÁ¤\n");
+    printf("5 : Àå¹Ù±¸´Ï ¸Þ´© »èÁ¦\n");
+    printf("6 : Àå¹Ù±¸´Ï ¸Þ´º °Ë»ö\n");
+    printf("7 : Àå¹Ù±¸´Ï ¸Þ´º ÀúÀå\n");
+    printf("8 : °áÁ¦ ¹× Àû¸³\n");
+    printf("0 : Á¾·á\n\n");
+    printf("=> ¼±ÅÃÇÏ½Ç ¸Þ´º¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ");
 
     scanf("%d", &menu);
 
     return menu;
 }
 
-int loadMyFood(food *mf[]){//ìŠ¹í¬
-    //ì¼ì¹˜í•˜ëŠ” ìž¥ë°”êµ¬ë‹ˆ ë°ì´í„° ë¶ˆëŸ¬ì˜¤ê¸°
-    //.txtíŒŒì¼ì„ ì°¾ì•„ì„œ ë¶ˆëŸ¬ì˜¤ë©´ "ê¸°ì¡´ ìž¥ë°”êµ¬ë‹ˆ ë¶ˆëŸ¬ì˜´"
-    //.txtíŒŒì¼ì„ ëª» ì°¾ìœ¼ë©´ "ê¸°ì¡´ ìž¥ë°”êµ¬ë‹ˆ ì—†ìŒ"
-    //return ê°’ì€ .txtíŒŒì¼ ì•ˆì— ìžˆì—ˆë˜ ë°ì´í„° ê°œìˆ˜ (ì—†ì—ˆìœ¼ë©´ 0 ë¦¬í„´)
+int loadMyFood(food *mf[]){//½ÂÈñ
+    //ÀÏÄ¡ÇÏ´Â Àå¹Ù±¸´Ï µ¥ÀÌÅÍ ºÒ·¯¿À±â
+    //.txtÆÄÀÏÀ» Ã£¾Æ¼­ ºÒ·¯¿À¸é "±âÁ¸ Àå¹Ù±¸´Ï ºÒ·¯¿È"
+    //.txtÆÄÀÏÀ» ¸ø Ã£À¸¸é "±âÁ¸ Àå¹Ù±¸´Ï ¾øÀ½"
+    //return °ªÀº .txtÆÄÀÏ ¾È¿¡ ÀÖ¾ú´ø µ¥ÀÌÅÍ °³¼ö (¾ø¾úÀ¸¸é 0 ¸®ÅÏ)
 }
 
-void saveMyFood(food *f[], int myCnt){//ìŠ¹í¬
-    //ì§€ê¸ˆê¹Œì§€ ì¶”ê°€, ìˆ˜ì •, ì‚­ì œ í•œ ë‚´ìš© .txtíŒŒì¼ì— ì €ìž¥í•˜ê¸°
-    //loadMyFoodì—ì„œì˜ .txtíŒŒì¼ëª…ê³¼ ë™ì¼í•œ txtíŒŒì¼ì´ì—¬ì•¼ í•¨
+void saveMyFood(food *f[], int myCnt){//½ÂÈñ
+    //Áö±Ý±îÁö Ãß°¡, ¼öÁ¤, »èÁ¦ ÇÑ ³»¿ë .txtÆÄÀÏ¿¡ ÀúÀåÇÏ±â
+    //loadMyFood¿¡¼­ÀÇ .txtÆÄÀÏ¸í°ú µ¿ÀÏÇÑ txtÆÄÀÏÀÌ¿©¾ß ÇÔ
 }
 
-int loadMemberData(member *m[]){//ìŠ¹í¬
-    //MemberDataë¥¼ í…ìŠ¤íŠ¸ íŒŒì¼ì—ì„œ ë¶ˆëŸ¬ì˜¤ê¸°
-    //ì´ member ìˆ˜ ë¦¬í„´
-}
-
-
-int Buy(food *mf[], int myCnt){//ìŠ¹í¬
-    //ìž¥ë°”êµ¬ë‹ˆ ì•ˆì— ìžˆëŠ” ë©”ë‰´ ì¶œë ¥
-    //ìž¥ë°”êµ¬ë‹ˆ ì•ˆì— ìžˆëŠ” ë©”ë‰´ ê°€ê²© ì´í•© ì¶œë ¥
-    //ê²°ì œí•˜ëŠ” ë¶€ë¶„ êµ¬í˜„
-    //ìž¥ë°”êµ¬ë‹ˆ ì•ˆì— ìžˆëŠ” ë©”ë‰´ ì „ì²´ ì‚­ì œ
-    //saveMyFood ì´ìš©í•´ ìž¥ë°”êµ¬ë‹ˆ ì•ˆ ë‚´ìš© ì§€ìš°ê¸°
-    //ê²°ì œí–ˆë˜ ë©”ë‰´ì˜ ê°œìˆ˜ ë¦¬í„´
+int loadMemberData(member *m[]){//½ÂÈñ
+    //MemberData¸¦ ÅØ½ºÆ® ÆÄÀÏ¿¡¼­ ºÒ·¯¿À±â
+    //ÃÑ member ¼ö ¸®ÅÏ
 }
 
 
-int searchMember(member *m[], int count, int buyCnt){//ìŠ¹í¬
-    //ê²€ìƒ‰í•  IDë¥¼ ìž…ë ¥ë°›ê³  
-    //IDê°€ ì¡´ìž¬í•˜ë©´ ê¸°ì¡´ í¬ì¸íŠ¸ì— buyCnt ì¶”ê°€ 
-    //í˜„ìž¬ í¬ì¸íŠ¸ ì¶œë ¥
-    //IDê°€ ì¡´ìž¬í•˜ì§€ ì•Šìœ¼ë©´ 1 ë¦¬í„´
+int Buy(food *mf[], int myCnt){//½ÂÈñ
+    //Àå¹Ù±¸´Ï ¾È¿¡ ÀÖ´Â ¸Þ´º Ãâ·Â
+    //Àå¹Ù±¸´Ï ¾È¿¡ ÀÖ´Â ¸Þ´º °¡°Ý ÃÑÇÕ Ãâ·Â
+    //°áÁ¦ÇÏ´Â ºÎºÐ ±¸Çö
+    //Àå¹Ù±¸´Ï ¾È¿¡ ÀÖ´Â ¸Þ´º ÀüÃ¼ »èÁ¦
+    //saveMyFood ÀÌ¿ëÇØ Àå¹Ù±¸´Ï ¾È ³»¿ë Áö¿ì±â
+    //°áÁ¦Çß´ø ¸Þ´ºÀÇ °³¼ö ¸®ÅÏ
 }
 
 
-int addMember(member *m, int buyCnt){//ìŠ¹í¬
-    //ë©”ë‰´ (ì´ë¦„, point) ì¶”ê°€
-    //ê°€ëŠ¥í•˜ë‹¤ë©´ ì¤‘ë³µëœ IDì€ ìž…ë ¥í•˜ì§€ ëª»í•˜ê²Œ 
-    //1 ë¦¬í„´
+int searchMember(member *m[], int count, int buyCnt){//½ÂÈñ
+    //°Ë»öÇÒ ID¸¦ ÀÔ·Â¹Þ°í 
+    //ID°¡ Á¸ÀçÇÏ¸é ±âÁ¸ Æ÷ÀÎÆ®¿¡ buyCnt Ãß°¡ 
+    //ÇöÀç Æ÷ÀÎÆ® Ãâ·Â
+    //ID°¡ Á¸ÀçÇÏÁö ¾ÊÀ¸¸é 1 ¸®ÅÏ
 }
 
-void saveMemberData(member *m[], int memberCnt){//ìŠ¹í¬
-    //ì§€ê¸ˆê¹Œì§€ ë§´ë²„ ë‚´ìš© .txtíŒŒì¼ì— ì €ìž¥í•˜ê¸°
-    //loadMemberDataì—ì„œì˜ .txtíŒŒì¼ëª…ê³¼ ë™ì¼í•œ txtíŒŒì¼ì´ì—¬ì•¼ í•¨
+
+int addMember(member *m, int buyCnt){//½ÂÈñ
+    //¸Þ´º (ÀÌ¸§, point) Ãß°¡
+    //°¡´ÉÇÏ´Ù¸é Áßº¹µÈ IDÀº ÀÔ·ÂÇÏÁö ¸øÇÏ°Ô 
+    //1 ¸®ÅÏ
+}
+
+void saveMemberData(member *m[], int memberCnt){//½ÂÈñ
+    //Áö±Ý±îÁö ¸É¹ö ³»¿ë .txtÆÄÀÏ¿¡ ÀúÀåÇÏ±â
+    //loadMemberData¿¡¼­ÀÇ .txtÆÄÀÏ¸í°ú µ¿ÀÏÇÑ txtÆÄÀÏÀÌ¿©¾ß ÇÔ
 }

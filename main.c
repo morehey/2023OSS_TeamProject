@@ -7,33 +7,33 @@
 int main(){
     int mode;
     int t;          //food type
-    int index;      //ë©”ë‰´íŒ ì¸ë±ìŠ¤
-    int myIndex;    //ì¥ë°”êµ¬ë‹ˆ ì¸ë±ìŠ¤
-    int memIndex;   //íšŒì› ì¸ë±ìŠ¤
+    int index;      //¸Ş´ºÆÇ ÀÎµ¦½º
+    int myIndex;    //Àå¹Ù±¸´Ï ÀÎµ¦½º
+    int memIndex;   //È¸¿ø ÀÎµ¦½º
     int menu;
-    int count;      //ë©”ë‰´íŒ ë©”ë‰´ ê°œìˆ˜ (ì‚­ì œ ëœ ê²ƒê¹Œì§€ í•©í•´ì„œ)
-    int myCnt;      //ì¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ê°œìˆ˜ (ì‚­ì œ ëœ ê²ƒê¹Œì§€ í•©í•´ì„œ)
-    int buyCnt;     //ì¥ë°”êµ¬ë‹ˆ ë©”ë‰´ ê°œìˆ˜ (ì‚­ì œ ëœ ê²ƒ ì œì™¸)
-    int memberCnt;  //íšŒì›ë“¤ ìˆ˜
-    int memberIs;   //ê¸°ì¡´ íšŒì›ì¸ì§€ ì—¬ë¶€
+    int count;      //¸Ş´ºÆÇ ¸Ş´º °³¼ö (»èÁ¦ µÈ °Í±îÁö ÇÕÇØ¼­)
+    int myCnt;      //Àå¹Ù±¸´Ï ¸Ş´º °³¼ö (»èÁ¦ µÈ °Í±îÁö ÇÕÇØ¼­)
+    int buyCnt;     //Àå¹Ù±¸´Ï ¸Ş´º °³¼ö (»èÁ¦ µÈ °Í Á¦¿Ü)
+    int memberCnt;  //È¸¿øµé ¼ö
+    int memberIs;   //±âÁ¸ È¸¿øÀÎÁö ¿©ºÎ
     food *fo[SIZE];
     food *myFo[SIZE];
     member *mem[MSIZE];
     
-    count = loadFood(fo);
+    count = loadMyFood(fo);
     index = count;
     mode = selectMode();
 
     while(1){
 
-        if (mode == 1){     //ë©”ë‰´íŒ CRUD
+        if (mode == 1){     //¸Ş´ºÆÇ CRUD
 
             while(1){
                 menu = selectMenuOne();
                 if (menu == 0) break;
                 else if (menu == 1){
                     if (count > 0 ) listFood(fo, index);
-                    else printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                    else printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
                 }
                 else if (menu == 2){
                     fo[index] = (food *)malloc(sizeof(food));
@@ -42,7 +42,7 @@ int main(){
                 else if (menu == 3){
                     int no = selectFoodNo(fo, index);
                     if (no == 0){
-                        printf("=> ì·¨ì†Œë¨\n");
+                        printf("=> Ãë¼ÒµÊ\n");
                         continue;
                     }
                     updateFood(fo[no-1]);
@@ -50,19 +50,19 @@ int main(){
                 else if (menu == 4){
                     int no = selectFoodNo(fo, index);
                     if (no == 0){
-                        printf("=> ì·¨ì†Œë¨!\n");
+                        printf("=> Ãë¼ÒµÊ!\n");
                         continue;
                     }
 
                     int deleteOk;
-                    printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ 1)");
+                    printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ 1)");
                     scanf("%d", &deleteOk);
                     if (deleteOk == 1){
                         deleteFood(fo[no-1]);
                         count--;
-                        printf("=> ì‚­ì œë¨\n");
+                        printf("=> »èÁ¦µÊ\n");
                     }
-                    else printf("=> ì·¨ì†Œë¨");
+                    else printf("=> Ãë¼ÒµÊ");
                 }
                 else if (menu == 5){
                     searchName(fo, index);
@@ -98,11 +98,11 @@ int main(){
             if (menu == 0) break;
             else if (menu == 1){
                 if (count > 0 ) listFood(fo, index);
-                else printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                else printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
             }
             else if (menu == 2){
                 if (myCnt > 0 ) listFood(myFo, myIndex);
-                else printf("ì¥ë°”êµ¬ë‹ˆì— ë‹´ê¸´ ë©”ë‰´ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                else printf("Àå¹Ù±¸´Ï¿¡ ´ã±ä ¸Ş´º°¡ ¾ø½À´Ï´Ù.\n");
 
             }
             else if (menu == 3){
@@ -112,7 +112,7 @@ int main(){
             else if (menu == 4){
                 int no = selectFoodNo(myFo, myIndex);
                     if (no == 0){
-                        printf("=> ì·¨ì†Œë¨\n");
+                        printf("=> Ãë¼ÒµÊ\n");
                         continue;
                     }
                     updateFood(myFo[no-1]);
@@ -120,19 +120,19 @@ int main(){
             else if (menu == 5){
                 int no = selectFoodNo(myFo, myIndex);
                     if (no == 0){
-                        printf("=> ì·¨ì†Œë¨!\n");
+                        printf("=> Ãë¼ÒµÊ!\n");
                         continue;
                     }
 
                     int deleteOk;
-                    printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ 1)");
+                    printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ 1)");
                     scanf("%d", &deleteOk);
                     if (deleteOk == 1){
                         deleteFood(myFo[no-1]);
                         myCnt--;
-                        printf("=> ì‚­ì œë¨\n");
+                        printf("=> »èÁ¦µÊ\n");
                     }
-                    else printf("=> ì·¨ì†Œë¨");
+                    else printf("=> Ãë¼ÒµÊ");
             }
             else if (menu == 6){
                 searchName(myFo, myIndex);
@@ -141,7 +141,7 @@ int main(){
                 saveMyFood(myFo, myIndex);
             }
             else if (menu == 8){
-                buyCnt = buy(myFo);
+                buyCnt = Buy(myFo, myCnt);
                 memberIs = searchMember(mem, memberCnt, buyCnt);
                 if (memberIs = 1 ){
                     mem[memIndex] = (member *)malloc (sizeof(member));
@@ -158,7 +158,7 @@ int main(){
 
     }
 
-    printf("í”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤.\n");
+    printf("ÇÁ·Î±×·¥ÀÌ Á¾·áµÇ¾ú½À´Ï´Ù.\n");
 
     
     return 0;
