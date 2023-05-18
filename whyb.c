@@ -47,71 +47,16 @@ int loadData(food *f[]){
 
 int selectMode(){//승희
     int menu;
-    printf("mode 선택\n\n\n");
-    printf("1 : 메뉴판 CRUD\n");
+    printf("\nWhy Bother Choose Menu? Use whyb instead!\n");
+    printf("-----------------------------------------\n");
+    printf("\nmode 선택\n\n");
+    printf("1 : 메뉴판\n");
     printf("2 : 메뉴 고르기 도우미\n");
     printf("3 : 메뉴 주문하기\n");
-    printf("4 : 전체 프로그램 종료\n");
+    printf("4 : 전체 프로그램 종료\n\n");
+    printf("메뉴 입력 : ");
     scanf("%d", &menu);
     return menu;
-}
-
-int selectFoodType(){//정환
-    //Type 1 : ~
-    //Type 2 : ~
-    //return Type 번호
-}
-
-
-int selectMenuOne(){//정환
-    //메뉴판 CRUD에서 메뉴 고르기
-    //menu 1 : 메뉴 조회
-    //menu 2 : 메뉴 추가
-    //menu 3 : 메뉴 수정
-    //menu 4 : 메뉴 삭제
-    //menu 5 : 메뉴 찾기
-    //menu 6 : 메뉴 저장
-    //menu 0 : 종료
-    //return 메뉴 번호
-}
-
-int addFood(food *f){//정환
-    //메뉴 (이름, 가격, 타입) 추가
-    //1 리턴
-}
-void readFood(food f){//정환
-    //해당 메뉴의 이름, 가격 print
-}
-
-
-void listFood(food *f[], int count){//정환
-    //selectFoodType으로 type 입력받기
-    //삭제되지 않은 번호이고, type이 일치하면 해당 번호 print
-    //readFood함수에서 menu 읽기
-}
-
-int selectFoodNo(food *f[], int count){//정환
-    //listFood로 번호와 메뉴들 보여주기
-    //메뉴 번호 리턴(취소 : 0)
-}
-
-void updateFood(food *f){//정환
-    //메뉴 이름, 가격, 타입 업데이트하기
-    //1 리턴하기
-}
-
-void deleteFood(food *f){//정환
-    //del를 0으로 변경
-}
-
-void searchName(food *f[], int count){//정환
-    //검색할 이름을 입력받고 
-    //삭제되지 않고, 이름이 같으면 readFood함수에서 menu 읽기
-}
-
-void saveData(food *f[], int count){//정환
-    //지금까지 추가, 수정, 삭제 한 내용 .txt파일에 저장하기
-    //loadData에서의 .txt파일명과 동일한 txt파일이여야 함
 }
 
 int selectMenuTwo(){//현준
@@ -155,6 +100,7 @@ int loadMyFood(food *mf[]){//승희
     //.txt파일을 찾아서 불러오면 "기존 장바구니 불러옴"
     //.txt파일을 못 찾으면 "기존 장바구니 없음"
     //return 값은 .txt파일 안에 있었던 데이터 개수 (없었으면 0 리턴)
+    return 1;
 }
 
 void saveMyFood(food *f[], int myCnt){//승희

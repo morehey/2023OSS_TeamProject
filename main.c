@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "whyb.h"
-#define SIZE 100
-#define MSIZE 100
 
 int main(){
+
     int mode;
     int t;          //food type
     int index;      //메뉴판 인덱스
@@ -16,6 +15,7 @@ int main(){
     int buyCnt;     //장바구니 메뉴 개수 (삭제 된 것 제외)
     int memberCnt;  //회원들 수
     int memberIs;   //기존 회원인지 여부
+
     food *fo[SIZE];
     food *myFo[SIZE];
     member *mem[MSIZE];
@@ -30,6 +30,7 @@ int main(){
 
             while(1){
                 menu = selectMenuOne();
+
                 if (menu == 0) break;
                 else if (menu == 1){
                     if (count > 0 ) listFood(fo, index);
@@ -70,7 +71,7 @@ int main(){
                 else if (menu == 6){
                     saveData(fo, index);
                 }
-        }
+            }
         
 
         }

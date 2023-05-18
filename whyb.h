@@ -1,3 +1,6 @@
+#define SIZE 100
+#define MSIZE 100
+
 typedef struct{
     char name[40];//메뉴 이름, 공백 포함
     int type;//메뉴의 종류(ex. 식사류 - 1, 음료류 - 2, 사이드류 - 3 등등)
