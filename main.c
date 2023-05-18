@@ -6,16 +6,16 @@
 
 int main(){
     int mode;
-    int t;//food type
-    int index;//메뉴판 인덱스
-    int myIndex;//장바구니 인덱스
-    int memIndex;//회원 인덱스
+    int t;          //food type
+    int index;      //메뉴판 인덱스
+    int myIndex;    //장바구니 인덱스
+    int memIndex;   //회원 인덱스
     int menu;
-    int count;//메뉴판 메뉴 개수 (삭제 된 것까지 합해서)
-    int myCnt;//장바구니 메뉴 개수 (삭제 된 것까지 합해서)
-    int buyCnt;//장바구니 메뉴 개수 (삭제 된 것 제외)
-    int memberCnt;//회원들 수
-    int memberIs;//기존 회원인지 여부
+    int count;      //메뉴판 메뉴 개수 (삭제 된 것까지 합해서)
+    int myCnt;      //장바구니 메뉴 개수 (삭제 된 것까지 합해서)
+    int buyCnt;     //장바구니 메뉴 개수 (삭제 된 것 제외)
+    int memberCnt;  //회원들 수
+    int memberIs;   //기존 회원인지 여부
     food *fo[SIZE];
     food *myFo[SIZE];
     member *mem[MSIZE];
@@ -26,7 +26,7 @@ int main(){
 
     while(1){
 
-        if (mode == 1){//메뉴판 CRUD
+        if (mode == 1){     //메뉴판 CRUD
 
             while(1){
                 menu = selectMenuOne();
