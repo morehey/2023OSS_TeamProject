@@ -15,7 +15,7 @@ int selectMenuThree(){
     printf("7 : Sava My Cart\n");
     printf("8 : Order And Earn Point\n");
     printf("0 : Quit\n\n");
-    printf("=> which mode do you want to start?");
+    printf("=> which menu do you want to start?");
 
     scanf("%d", &menu);
 
