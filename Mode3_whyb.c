@@ -15,57 +15,38 @@ int selectMenuThree(){
     printf("7 : Sava My Cart\n");
     printf("8 : Order And Earn Point\n");
     printf("0 : Quit\n\n");
-    printf("=> which mode do you want to start?");
+    printf("=> which menu do you want to start?");
 
     scanf("%d", &menu);
 
     return menu;
 }
 
-int loadMyFood(food *mf[]){//����
-    //��ġ�ϴ� ��ٱ��� ������ �ҷ�����
-    //.txt������ ã�Ƽ� �ҷ����� "���� ��ٱ��� �ҷ���"
-    //.txt������ �� ã���� "���� ��ٱ��� ����"
-    //return ���� .txt���� �ȿ� �־��� ������ ���� (�������� 0 ����)
+int loadMyFood(food *mf[]){
     return 0;
 }
 
-void saveMyFood(food *f[], int myCnt){//����
-    //���ݱ��� �߰�, ����, ���� �� ���� .txt���Ͽ� �����ϱ�
-    //loadMyFood������ .txt���ϸ��� ������ txt�����̿��� ��
+void saveMyFood(food *f[], int myCnt){
 }
 
-int loadMemberData(member *m[]){//����
-    //MemberData�� �ؽ�Ʈ ���Ͽ��� �ҷ�����
-    //�� member �� ����
+int loadMemberData(member *m[]){
 }
 
 
-int Buy(food *mf[], int myCnt){//����
-    //��ٱ��� �ȿ� �ִ� �޴� ���
-    //��ٱ��� �ȿ� �ִ� �޴� ���� ���� ���
-    //�����ϴ� �κ� ����
-    //��ٱ��� �ȿ� �ִ� �޴� ��ü ����
-    //saveMyFood �̿��� ��ٱ��� �� ���� �����
-    //�����ߴ� �޴��� ���� ����
+int Buy(food *mf[], int myCnt){
+  
 }
 
 
 int searchMember(member *m[], int count, int buyCnt){//����
-    //�˻��� ID�� �Է¹ް� 
-    //ID�� �����ϸ� ���� ����Ʈ�� buyCnt �߰� 
-    //���� ����Ʈ ���
-    //ID�� �������� ������ 1 ����
+
 }
 
 
 int addMember(member *m, int buyCnt){//����
-    //�޴� (�̸�, point) �߰�
-    //�����ϴٸ� �ߺ��� ID�� �Է����� ���ϰ� 
-    //1 ����
+
 }
 
 void saveMemberData(member *m[], int memberCnt){//����
-    //���ݱ��� �ɹ� ���� .txt���Ͽ� �����ϱ�
-    //loadMemberData������ .txt���ϸ��� ������ txt�����̿��� ��
+
 }
