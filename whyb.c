@@ -1,19 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include "whyb.h"
+
 
 int loadData(food *f[]){
    const char* filename = "menu_data.txt";
     FILE* file = fopen(filename, "r");
 
     if (file != NULL) {
+
         // 파일이 성공적으로 열렸을 때 실행되는 코드
         // 데이터를 파일로부터 읽어와서 f 배열에 저장하는 작업을 수행하면 됩니다.
-
         // 예시: 파일에서 데이터를 읽어와서 배열에 저장하는 과정
+
         int dataCount = 0;
         char line[256];
         while (fgets(line, sizeof(line), file) != NULL) {
-            sscanf(line, "9s %d %d %d %d %d", 
+            scanf(line, "9s %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -49,7 +53,7 @@ int selectMode(){//승희
     int menu;
     printf("\nWhy Bother Choose Menu? Use whyb instead!\n");
     printf("-----------------------------------------\n");
-    printf("\nmode 선택\n\n");
+    printf("mode 선택\n\n");
     printf("1 : 메뉴판\n");
     printf("2 : 메뉴 고르기 도우미\n");
     printf("3 : 메뉴 주문하기\n");
@@ -100,7 +104,7 @@ int loadMyFood(food *mf[]){//승희
     //.txt파일을 찾아서 불러오면 "기존 장바구니 불러옴"
     //.txt파일을 못 찾으면 "기존 장바구니 없음"
     //return 값은 .txt파일 안에 있었던 데이터 개수 (없었으면 0 리턴)
-    return 1;
+    return 0;
 }
 
 void saveMyFood(food *f[], int myCnt){//승희

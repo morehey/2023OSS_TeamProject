@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "whyb.h"
@@ -7,7 +9,7 @@ int main(){
     int mode;
     int t;          //food type
     int index;      //메뉴판 인덱스
-    int myIndex;    //장바구니 인덱스
+    int myIndex = 0;    //장바구니 인덱스
     int memIndex;   //회원 인덱스
     int menu;
     int count;      //메뉴판 메뉴 개수 (삭제 된 것까지 합해서)
@@ -22,7 +24,7 @@ int main(){
     
     count = loadMyFood(fo);
     index = count;
-    mode = selectMode();
+    mode = selectMode(); 
 
     while(1){
 
