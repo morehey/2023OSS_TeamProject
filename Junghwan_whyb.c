@@ -5,11 +5,11 @@
 #include "whyb.h"
 
 
-int selectFoodType(){//Á¤È¯
+int selectFoodType(){//ì •í™˜
     
     //Type 1 : ~
     //Type 2 : ~
-    //return Type ¹øÈ£
+    //return Type ë²ˆí˜¸
 }
 
 int selectMenuOne() {
@@ -17,15 +17,15 @@ int selectMenuOne() {
     char buf[SIZE];
     int menu;
     
-    printf("\nMenu  -  Select Menu\n");
-    printf("----------------------\n\n");
-    printf("1 : Read Menu\n");
-    printf("2 : Add Menu\n");
-    printf("3 : Fix Menu\n");
-    printf("4 : Delete Menu\n");
-    printf("5 : Search Menu\n");
-    printf("6 : Save Menu\n");
-    printf("0 : EXit\n\n");
+    printf("\t\nMenu  -  Select Menu\n");
+    printf("\t----------------------\n\n");
+    printf("\t1 : Read Menu\n");
+    printf("\t2 : Add Menu\n");
+    printf("\t3 : Fix Menu\n");
+    printf("\t4 : Delete Menu\n");
+    printf("\t5 : Search Menu\n");
+    printf("\t6 : Save Menu\n");
+    printf("\t0 : EXit\n\n");
     printf("Enter a number : ");
 
     fgets(buf, SIZE, stdin);   
@@ -34,7 +34,7 @@ int selectMenuOne() {
     return menu;
 }
 
-int addFood(food *f){   //Á¤È¯
+int addFood(food *f){   //ì •í™˜
 
     char buf[SIZE];
 
@@ -62,7 +62,7 @@ int addFood(food *f){   //Á¤È¯
 
 }
 
-void readFood(food f){//Á¤È¯
+void readFood(food f){//ì •í™˜
     if (f.del == 0) {
         printf("No data.");
         return;
@@ -70,11 +70,11 @@ void readFood(food f){//Á¤È¯
     else {
         printf("| %s\t   | %d\t\t | %d won\t | %d\n", f.name, f.type, f.price, f.cnt);
     }
-    //ÇØ´ç ¸Þ´ºÀÇ ÀÌ¸§, °¡°Ý print
+    //í•´ë‹¹ ë©”ë‰´ì˜ ì´ë¦„, ê°€ê²© print
 }
 
 
-void listFood(food *f[], int count){//Á¤È¯
+void listFood(food *f[], int count){//ì •í™˜
 
 
     printf("\nnumber\t| Name\t\t   | Type\t | Price\t | Quantity\n");
@@ -88,7 +88,7 @@ void listFood(food *f[], int count){//Á¤È¯
 
 }
 
-int selectFoodNo(food *f[], int count){//Á¤È¯
+int selectFoodNo(food *f[], int count){//ì •í™˜
     int num;
     listFood(f, count);
     printf("What is the menu number? (Cancle :0) : ");
@@ -96,7 +96,7 @@ int selectFoodNo(food *f[], int count){//Á¤È¯
     return num;
 }
 
-void updateFood(food *f){//Á¤È¯
+void updateFood(food *f){//ì •í™˜
 
     char buf[SIZE];
 
@@ -122,7 +122,7 @@ void updateFood(food *f){//Á¤È¯
     printf("Menu has been successfully fixed!\n");
 }
 
-void deleteFood(food *f){//Á¤È¯
+void deleteFood(food *f){//ì •í™˜
     f->name[0] = '\0';
     f->type = -1;
     f->price = -1;
@@ -130,7 +130,7 @@ void deleteFood(food *f){//Á¤È¯
     f->del = 0;
 }
 
-void searchName(food *f[], int count){//Á¤È¯
+void searchName(food *f[], int count){//ì •í™˜
 
     char menuName[SIZE];
     bool found = false;
@@ -156,7 +156,23 @@ void searchName(food *f[], int count){//Á¤È¯
     if (!found) printf(">> Menu not found <<\n");
 }
 
-void saveData(food *f[], int count){//Á¤È¯
-    //Áö±Ý±îÁö Ãß°¡, ¼öÁ¤, »èÁ¦ ÇÑ ³»¿ë .txtÆÄÀÏ¿¡ ÀúÀåÇÏ±â
-    //loadData¿¡¼­ÀÇ .txtÆÄÀÏ¸í°ú µ¿ÀÏÇÑ txtÆÄÀÏÀÌ¿©¾ß ÇÔ
+void saveData(food *f[], int count){//ì •í™˜
+
+    FILE *file;
+
+    file = fopen("saved_menu_data.txt", "w");
+
+    if (file == NULL) {
+        printf("Failed to open the file for writing.\n");
+        return;
+    }
+
+    for (int i = 0; i < count; i++) {
+        fprintf(file, "%s %d %d %d\n", 
+        f[i]->name, f[i]->type, f[i]->price, f[i]->cnt);
+    }
+
+    fclose(file);
+
+    printf("\n>> Food data saved to file successfully <<\n");
 }
