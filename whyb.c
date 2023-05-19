@@ -27,14 +27,14 @@ int loadData(food *f[]){
 
         fclose(file);
 
-        printf("������ �ҷ���\n");
+        printf("data loaded\n");
 
-        // ���� �ȿ� �ִ� ������ ���� ��ȯ
+        // return data count
         return dataCount;
     } else {
-        printf("������ ����\n");
+        printf("there is no data\n");
 
-        // �����Ͱ� �����Ƿ� 0�� ��ȯ
+        // return 0 because there is nodata
         return 0;
     }
 
