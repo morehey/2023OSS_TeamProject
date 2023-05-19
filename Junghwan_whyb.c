@@ -16,16 +16,16 @@ int selectMenuOne() {
     char buf[SIZE];
     int menu;
     
-    printf("\n메뉴판  -  메뉴 선택\n");
+    printf("\nMenu  -  Select Menu\n");
     printf("---------------------\n\n");
-    printf("1 : 메뉴 조회\n");
-    printf("2 : 메뉴 추가\n");
-    printf("3 : 메뉴 수정\n");
-    printf("4 : 메뉴 삭제\n");
-    printf("5 : 메뉴 찾기\n");
-    printf("6 : 메뉴 저장\n");
-    printf("0 : 종료\n\n");
-    printf("메뉴 입력 : ");
+    printf("1 : Read Menu\n");
+    printf("2 : Add Menu\n");
+    printf("3 : Fix Menu\n");
+    printf("4 : Delete Menu\n");
+    printf("5 : Search Menu\n");
+    printf("6 : Save Menu\n");
+    printf("0 : EXit\n\n");
+    printf("Enter a number : ");
 
     fgets(buf, SIZE, stdin);   
     menu = atoi(buf);
@@ -37,39 +37,37 @@ int addFood(food *f){   //정환
 
     char buf[SIZE];
 
-    printf("\n메뉴 이름을 입력하세요: ");
+    printf("\nEnter the name of the menu: ");
     fgets(f->name, SIZE, stdin);
     f->name[strlen(f->name)-1] = '\0';
     
-    printf("메뉴의 종류는? (식사 : 1, 음료 : 2, 사이드 : 3): ");
+    printf("Menu type? (Meal : 1, Dring : 2, Side : 3): ");
     fgets(buf, SIZE, stdin);
     f->type = atoi(buf);
     
-    printf("가격은?: ");
+    printf("Price?: ");
     fgets(buf, SIZE, stdin);
     f->price = atoi(buf);
     
-    printf("수량은?: ");
+    printf("Quantity?: ");
     fgets(buf, SIZE, stdin);
     f->cnt = atoi(buf);
 
     f->del = 1;
     
-    printf("메뉴가 성공적으로 추가되었습니다!\n");
+    printf("Menu has been successfully added!\n");
     
     return 1;
 
-    //메뉴 (이름, 가격, 타입) 추가
-    //1 리턴
 }
 
 void readFood(food f){//정환
     if (f.del == 0) {
-        printf("정보가 없습니다.");
+        printf("No data.");
         return;
     }
     else {
-        printf("| %s\t   | %d\t\t | %d원\t | %d개\n", f.name, f.type, f.price, f.cnt);
+        printf("| %s\t   | %d\t\t | %dwon\t | %d\n", f.name, f.type, f.price, f.cnt);
     }
     //해당 메뉴의 이름, 가격 print
 }
@@ -77,7 +75,7 @@ void readFood(food f){//정환
 
 void listFood(food *f[], int count){//정환
 
-    printf("번호\t| 메뉴이름\t   | 종류\t | 가격\t\t | 수량\n");
+    printf("number\t| Name\t   | Type\t | Price\t\t | Quantity\n");
     printf("------------------------------------------------------------------\n");
     for(int i = 0; i < count; i++){
         if(f[i] == NULL) continue;
@@ -91,7 +89,7 @@ void listFood(food *f[], int count){//정환
 int selectFoodNo(food *f[], int count){//정환
     int num;
     listFood(f, count);
-    printf("번호는? (취소 :0) : ");
+    printf("What is the menu number? (Cancle :0) : ");
     scanf("%d", &num);
     return num;
 }
@@ -100,26 +98,26 @@ void updateFood(food *f){//정환
 
     char buf[SIZE];
 
-    printf("\n메뉴판  -  메뉴 수정\n");
+    printf("\nMenu  -  Fix Menu\n");
     printf("---------------------\n\n");
 
-    printf("\n메뉴 이름을 입력하세요: ");
+    printf("\nEnter the name of the menu: ");
     fgets(f->name, SIZE, stdin);
     f->name[strlen(f->name)-1] = '\0';
     
-    printf("메뉴의 종류는? (식사 : 1, 음료 : 2, 사이드 : 3): ");
+    printf("Menu type? (Meal : 1, Dring : 2, Side : 3): ");
     fgets(buf, SIZE, stdin);
     f->type = atoi(buf);
     
-    printf("가격은?: ");
+    printf("Price?: ");
     fgets(buf, SIZE, stdin);
     f->price = atoi(buf);
     
-    printf("수량은?: ");
+    printf("Quantity?: ");
     fgets(buf, SIZE, stdin);
     f->cnt = atoi(buf);
     
-    printf("메뉴가 성공적으로 수정되었습니다!\n");
+    printf("Menu has been successfully fixed!\n");
     
     return 1;
 }
