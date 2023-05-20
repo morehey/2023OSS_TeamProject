@@ -23,30 +23,158 @@ int selectMenuThree(){
 }
 
 int loadMyFood(food *mf[]){
+    const char* filename = "myFood_data.txt";
+    FILE* file = fopen(filename, "r");
+
+    if (file != NULL) {
+
+        int myFoodCount = 0;
+        char line[256];
+        while (fgets(line, sizeof(line), file) != NULL) {
+            scanf(line, "9s %d %d %d", 
+                   mf[myFoodCount]->name,
+                   &mf[myFoodCount]->type,
+                   &mf[myFoodCount]->price,
+                   &mf[myFoodCount]->cnt
+                   );
+
+            myFoodCount++;
+        }
+
+        fclose(file);
+
+        printf("data loaded\n");
+        return myFoodCount;
+    } else {
+        printf("there is no data\n");
+        return 0;
+    }
     return 0;
 }
 
 void saveMyFood(food *f[], int myCnt){
+
+    FILE *file;
+
+    file = fopen("myFood_data.txt", "w");
+
+    if (file == NULL) {
+        printf("Failed to open the file for writing.\n");
+        return;
+    }
+
+    for (int i = 0; i < myCnt; i++) {
+        fprintf(file, "%s %d %d %d\n", 
+        f[i]->name, f[i]->type, f[i]->price, f[i]->cnt);
+    }
+
+    fclose(file);
+
+    printf("\n>> MyFood data saved to file successfully <<\n");
 }
 
 int loadMemberData(member *m[]){
+    const char* filename = "Member_data.txt";
+    FILE* file = fopen(filename, "r");
+
+    if (file != NULL) {
+
+        int MemberCount = 0;
+        char line[256];
+        while (fgets(line, sizeof(line), file) != NULL) {
+            scanf(line, "9s %d %d %d", 
+                   m[MemberCount]->userID,
+                   &m[MemberCount]->point
+                   );
+
+            MemberCount++;
+        }
+
+        fclose(file);
+
+        printf("data loaded\n");
+        return MemberCount;
+    } else {
+        printf("there is no data\n");
+        return 0;
+    }
+    return 0;
 }
 
+int countBuy(food *mf[], int myCnt){
+    int totalCnt = 0;
+    for (int i = 0 ; i < myCnt ; i++){
+        if (mf[i] -> del == 0 ) continue;
+        else totalCnt++;
+    }
 
-int Buy(food *mf[], int myCnt){
+    return totalCnt;
   
 }
 
 
-int searchMember(member *m[], int count, int buyCnt){//����
 
+int Buy(food *mf[], int myCnt){
+    int totalPrice = 0;
+    for (int i = 0 ; i < myCnt ; i++){
+        if (mf[i] -> del == 0 ) continue;
+        else totalPrice+=mf[i]->price;
+    }
+
+    return totalPrice;
+  
+}
+
+void readMember(member m){
+    printf("%s %d", m.userID, m.point);
+}
+
+int searchMember(member *m[], int count, int buyCnt){
+    int scnt = 0;
+    char search[20];
+
+    printf("검색할 이름은? ");
+    scanf("%s", search);
+
+    printf("\nNo UserId Point\n");
+    printf("===============================\n");
+    for (int i = 0 ; i < count ; i ++){
+        if (strstr(m[i]->userID, search)){
+            printf("%2d", i+1);
+            readMember(*m[i]);
+            break;
+        }
+    }
+    if (scnt == 0 ) printf("=> 기존 회원이 아닙니다!");
+    printf("\n");
 }
 
 
-int addMember(member *m, int buyCnt){//����
 
+int addMember(member *m, int buyCnt){
+    printf("What is you UserID? ");
+    scanf("%s", m->userID);
+    m->point = 0;
+    return 1;
+    //I want to add the service which makes member doesn't duplicate. If time is possible, I will try it.
 }
 
-void saveMemberData(member *m[], int memberCnt){//����
+void saveMemberData(member *m[], int memberCnt){
+    FILE *file;
+
+    file = fopen("myFood_data.txt", "w");
+
+    if (file == NULL) {
+        printf("Failed to open the file for writing.\n");
+        return;
+    }
+
+    for (int i = 0; i < memberCnt; i++) {
+        fprintf(file, "%s %d\n", m[i]->userID, m[i]->point);
+    }
+
+    fclose(file);
+
+    printf("\n>> Member data saved to file successfully <<\n");
 
 }

@@ -35,7 +35,9 @@ int loadMyFood(food *mf[]);
 void saveMyFood(food *mf[], int myCnt);
 int loadMemberData(member *m[]);
 int addMember(member *m, int buyCnt);
+int countBuy(food *mf[], int myCnt);
 int Buy(food *mf[], int myCnt);
+void readMember(member m);
 int searchMember(member *f[], int memberCnt, int buyCnt);
 void saveMemberData(member *m[], int memberCnt);
 
