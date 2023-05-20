@@ -33,6 +33,7 @@ int main(){
         if (mode == 1){     //메뉴판 CRUD
 
             bool repeat = true;
+            
             while(repeat){
                 menu = selectMenuOne();
 
@@ -162,8 +163,7 @@ int main(){
 
     }
 
-    printf("프로그램이 종료되었습니다.\n");
-
+    printf(">> Good Bye~ <<\n");
     
     return 0;
 }

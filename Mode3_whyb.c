@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,7 +7,10 @@
 
 
 int selectMenuThree(){
+
+    char buf[SIZE];
     int menu;
+
     printf("1 : Show Menu\n");
     printf("2 : Show My Cart\n");
     printf("3 : Add Menu To My Cart\n");
@@ -17,7 +22,8 @@ int selectMenuThree(){
     printf("0 : Quit\n\n");
     printf("=> which menu do you want to start?");
 
-    scanf("%d", &menu);
+    fgets(buf, SIZE, stdin);   
+    menu = atoi(buf);
 
     return menu;
 }
