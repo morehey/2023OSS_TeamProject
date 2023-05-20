@@ -44,7 +44,7 @@ int addFood(food *f){   //정환
     fgets(f->name, SIZE, stdin);
     f->name[strlen(f->name)-1] = '\0';
     
-    printf("Menu type? (Meal : 1, Dring : 2, Side : 3): ");
+    printf("Menu type? (Meal : 1, Drink : 2, Side : 3): ");
     fgets(buf, SIZE, stdin);
     f->type = atoi(buf);
     

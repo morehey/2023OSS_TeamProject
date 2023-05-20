@@ -139,7 +139,7 @@ int searchMember(member *m[], int count, int buyCnt){
     int scnt = 0;
     char search[20];
 
-    printf("검색할 이름은? ");
+    printf("what is the name of the member? ");
     scanf("%s", search);
 
     printf("\nNo UserId Point\n");
@@ -151,7 +151,7 @@ int searchMember(member *m[], int count, int buyCnt){
             break;
         }
     }
-    if (scnt == 0 ) printf("=> 기존 회원이 아닙니다!");
+    if (scnt == 0 ) printf("=> Not a valid user!");
     printf("\n");
 }
 

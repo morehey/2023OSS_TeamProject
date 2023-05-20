@@ -49,7 +49,7 @@ int main(){
                 else if (menu == 3){
                     int no = selectFoodNo(fo, index);
                     if (no == 0){
-                        printf("=> 취소됨\n");
+                        printf("=> Cancled!\n");
                         continue;
                     }
                     updateFood(fo[no-1]);
@@ -57,7 +57,7 @@ int main(){
                 else if (menu == 4){
                     int no = selectFoodNo(fo, index);
                     if (no == 0){
-                        printf("=> 취소됨!\n");
+                        printf("=> Cancled!\n");
                         continue;
                     }
 
@@ -67,9 +67,9 @@ int main(){
                     if (deleteOk == 1){
                         deleteFood(fo[no-1]);
                         count--;
-                        printf("=> 삭제됨\n");
+                        printf("=> Deleted!\n");
                     }
-                    else printf("=> 취소됨");
+                    else printf("=> Cancled!");
                 }
                 else if (menu == 5){
                     searchName(fo, index);
@@ -98,7 +98,7 @@ int main(){
 
             bool repeat = true;
             while (repeat) {
-                
+
                 menu = selectMenuThree();
                 myCnt = loadMyFood(myFo);
                 memberCnt = loadMemberData(mem);
@@ -111,7 +111,7 @@ int main(){
                 }
                 else if (menu == 2){
                     if (myCnt > 0 ) listFood(myFo, myIndex);
-                    else printf("장바구니에 담긴 메뉴가 없습니다.\n");
+                    else printf("There are no menu in the cart\n");
 
                 }
                 else if (menu == 3){
@@ -121,7 +121,7 @@ int main(){
                 else if (menu == 4){
                     int no = selectFoodNo(myFo, myIndex);
                         if (no == 0){
-                            printf("=> 취소됨\n");
+                            printf("=> Cancled!\n");
                             continue;
                         }
                         updateFood(myFo[no-1]);
@@ -129,19 +129,19 @@ int main(){
                 else if (menu == 5){
                     int no = selectFoodNo(myFo, myIndex);
                         if (no == 0){
-                            printf("=> 취소됨!\n");
+                            printf("=> Cancled!\n");
                             continue;
                         }
 
                         int deleteOk;
-                        printf("정말로 삭제하시겠습니까?(삭제 1)");
+                        printf(">> Are you sure you want to delete? (confirm : 1) <<");
                         scanf("%d", &deleteOk);
                         if (deleteOk == 1){
                             deleteFood(myFo[no-1]);
                             myCnt--;
-                            printf("=> 삭제됨\n");
+                            printf("=> Deleted!\n");
                         }
-                        else printf("=> 취소됨");
+                        else printf("=> Cancled!");
                 }
                 else if (menu == 6){
                     searchName(myFo, myIndex);
