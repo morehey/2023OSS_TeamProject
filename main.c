@@ -33,7 +33,7 @@ int main(){
         if (mode == 1){     //메뉴판 CRUD
 
             bool repeat = true;
-            
+
             while(repeat){
                 menu = selectMenuOne();
 
@@ -94,66 +94,71 @@ int main(){
             }
         }
 
-        else if (mode == 3){
-            menu = selectMenuThree();
-            myCnt = loadMyFood(myFo);
-            memberCnt = loadMemberData(mem);
-            memIndex = memberCnt;
+        else if (mode == 3) {
 
-            if (menu == 0) break;
-            else if (menu == 1){
-                if (count > 0 ) listFood(fo, index);
-                else printf(">> No data <<\n");
-            }
-            else if (menu == 2){
-                if (myCnt > 0 ) listFood(myFo, myIndex);
-                else printf("장바구니에 담긴 메뉴가 없습니다.\n");
+            bool repeat = true;
+            while (repeat) {
+                
+                menu = selectMenuThree();
+                myCnt = loadMyFood(myFo);
+                memberCnt = loadMemberData(mem);
+                memIndex = memberCnt;
 
-            }
-            else if (menu == 3){
-                myFo[myIndex] = (food *)malloc(sizeof(food));
-                myCnt += addFood(myFo[myIndex++]);
-            }
-            else if (menu == 4){
-                int no = selectFoodNo(myFo, myIndex);
-                    if (no == 0){
-                        printf("=> 취소됨\n");
-                        continue;
-                    }
-                    updateFood(myFo[no-1]);
-            }
-            else if (menu == 5){
-                int no = selectFoodNo(myFo, myIndex);
-                    if (no == 0){
-                        printf("=> 취소됨!\n");
-                        continue;
-                    }
-
-                    int deleteOk;
-                    printf("정말로 삭제하시겠습니까?(삭제 1)");
-                    scanf("%d", &deleteOk);
-                    if (deleteOk == 1){
-                        deleteFood(myFo[no-1]);
-                        myCnt--;
-                        printf("=> 삭제됨\n");
-                    }
-                    else printf("=> 취소됨");
-            }
-            else if (menu == 6){
-                searchName(myFo, myIndex);
-            }
-            else if (menu == 7){
-                saveMyFood(myFo, myIndex);
-            }
-            else if (menu == 8){
-                buyCnt = Buy(myFo, myCnt);
-                buyCnt = countBuy(myFo, myCnt);
-                memberIs = searchMember(mem, memberCnt, buyCnt);
-                if (memberIs == 1){
-                    mem[memIndex] = (member *)malloc (sizeof(member));
-                    memberCnt += addMember(mem[memIndex++], buyCnt);
+                if (menu == 0) repeat = false;
+                else if (menu == 1){
+                    if (count > 0 ) listFood(fo, index);
+                    else printf(">> No data <<\n");
                 }
-                saveMemberData(mem, memberCnt);
+                else if (menu == 2){
+                    if (myCnt > 0 ) listFood(myFo, myIndex);
+                    else printf("장바구니에 담긴 메뉴가 없습니다.\n");
+
+                }
+                else if (menu == 3){
+                    myFo[myIndex] = (food *)malloc(sizeof(food));
+                    myCnt += addFood(myFo[myIndex++]);
+                }
+                else if (menu == 4){
+                    int no = selectFoodNo(myFo, myIndex);
+                        if (no == 0){
+                            printf("=> 취소됨\n");
+                            continue;
+                        }
+                        updateFood(myFo[no-1]);
+                }
+                else if (menu == 5){
+                    int no = selectFoodNo(myFo, myIndex);
+                        if (no == 0){
+                            printf("=> 취소됨!\n");
+                            continue;
+                        }
+
+                        int deleteOk;
+                        printf("정말로 삭제하시겠습니까?(삭제 1)");
+                        scanf("%d", &deleteOk);
+                        if (deleteOk == 1){
+                            deleteFood(myFo[no-1]);
+                            myCnt--;
+                            printf("=> 삭제됨\n");
+                        }
+                        else printf("=> 취소됨");
+                }
+                else if (menu == 6){
+                    searchName(myFo, myIndex);
+                }
+                else if (menu == 7){
+                    saveMyFood(myFo, myIndex);
+                }
+                else if (menu == 8){
+                    buyCnt = Buy(myFo, myCnt);
+                    buyCnt = countBuy(myFo, myCnt);
+                    memberIs = searchMember(mem, memberCnt, buyCnt);
+                    if (memberIs == 1){
+                        mem[memIndex] = (member *)malloc (sizeof(member));
+                        memberCnt += addMember(mem[memIndex++], buyCnt);
+                    }
+                    saveMemberData(mem, memberCnt);
+                }
             }
         }
         
