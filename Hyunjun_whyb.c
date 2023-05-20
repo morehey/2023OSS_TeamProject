@@ -51,7 +51,7 @@ int selectMenuTwo(){
     printf(" 2 : pick by world cup \n" );
     printf(" 0 : quit ");
 
-    scanf("%d",&num);
+    scanf("%d", &num);
 
     return num;
 
@@ -66,13 +66,13 @@ void randomPick(food *f[], int count){
     srand(time(NULL));
 
     while(judge==0){
-    int randomNumber = rand() % 100;
+        int randomNumber = rand() % 100;
 
-    type = selectFoodType;
+        type = selectFoodType();
 
-    if(f[randomNumber]->s)
+        // if(f[randomNumber]->s)
+        // }
     }
-    
 
 }
 

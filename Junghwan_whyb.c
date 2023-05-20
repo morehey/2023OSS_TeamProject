@@ -17,7 +17,7 @@ int selectMenuOne() {
     char buf[SIZE];
     int menu;
     
-    printf("\t\nMenu  -  Select Menu\n");
+    printf("\t\t\nMenu  -  Select Menu\n");
     printf("\t----------------------\n\n");
     printf("\t1 : Read Menu\n");
     printf("\t2 : Add Menu\n");

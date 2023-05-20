@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include "whyb.h"
 
 int main(){
@@ -23,17 +24,19 @@ int main(){
     member *mem[MSIZE];
     
     count = loadData(fo);
-    index = count;
-    mode = selectMode(); 
-
+    index = count;    
+    
     while(1){
+
+        mode = selectMode(); 
 
         if (mode == 1){     //메뉴판 CRUD
 
-            while(1){
+            bool repeat = true;
+            while(repeat){
                 menu = selectMenuOne();
 
-                if (menu == 0) break;
+                if (menu == 0) repeat = false;
                 else if (menu == 1){
                     if (count > 0 ) listFood(fo, index);
                     else printf(">> No data <<\n");
@@ -76,10 +79,11 @@ int main(){
             }
         }
         
-        if (mode == 2){
-            while(1){
+        else if (mode == 2){
+            bool repeat = true;
+            while(repeat){
                 menu = selectMenuTwo();
-                if (menu == 0) break;
+                if (menu == 0) repeat = false;
                 else if (menu == 1){
                     randomPick(fo, index);
                 }
@@ -89,7 +93,7 @@ int main(){
             }
         }
 
-        if (mode == 3){
+        else if (mode == 3){
             menu = selectMenuThree();
             myCnt = loadMyFood(myFo);
             memberCnt = loadMemberData(mem);
@@ -144,16 +148,15 @@ int main(){
                 buyCnt = Buy(myFo, myCnt);
                 buyCnt = countBuy(myFo, myCnt);
                 memberIs = searchMember(mem, memberCnt, buyCnt);
-                if (memberIs = 1 ){
+                if (memberIs == 1){
                     mem[memIndex] = (member *)malloc (sizeof(member));
                     memberCnt += addMember(mem[memIndex++], buyCnt);
                 }
                 saveMemberData(mem, memberCnt);
             }
-
         }
         
-        if (mode == 4){
+        else if (mode == 4){
             break;
         }
 
