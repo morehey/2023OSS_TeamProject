@@ -22,7 +22,7 @@ int main(){
     food *myFo[SIZE];
     member *mem[MSIZE];
     
-    count = loadMyFood(fo);
+    count = loadData(fo);
     index = count;
     mode = selectMode(); 
 
@@ -145,6 +145,7 @@ int main(){
             }
             else if (menu == 8){
                 buyCnt = Buy(myFo, myCnt);
+                buyCnt = countBuy(myFo, myCnt);
                 memberIs = searchMember(mem, memberCnt, buyCnt);
                 if (memberIs = 1 ){
                     mem[memIndex] = (member *)malloc (sizeof(member));
