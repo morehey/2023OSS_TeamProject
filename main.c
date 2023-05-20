@@ -36,7 +36,7 @@ int main(){
                 if (menu == 0) break;
                 else if (menu == 1){
                     if (count > 0 ) listFood(fo, index);
-                    else printf("데이터가 없습니다.\n");
+                    else printf(">> No data <<\n");
                 }
                 else if (menu == 2){
                     fo[index] = (food *)malloc(sizeof(food));
@@ -58,7 +58,7 @@ int main(){
                     }
 
                     int deleteOk;
-                    printf("정말로 삭제하시겠습니까?(삭제 1)");
+                    printf(">> Are you sure you want to delete? (confirm : 1) <<");
                     scanf("%d", &deleteOk);
                     if (deleteOk == 1){
                         deleteFood(fo[no-1]);
@@ -74,8 +74,6 @@ int main(){
                     saveData(fo, index);
                 }
             }
-        
-
         }
         
         if (mode == 2){
@@ -89,7 +87,6 @@ int main(){
                     worldCupPick(fo, index);
                 }
             }
-
         }
 
         if (mode == 3){

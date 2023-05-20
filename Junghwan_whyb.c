@@ -76,7 +76,6 @@ void readFood(food f){//정환
 
 void listFood(food *f[], int count){//정환
 
-
     printf("\nnumber\t| Name\t\t   | Type\t | Price\t | Quantity\n");
     printf("------------------------------------------------------------------\n");
     for(int i = 0; i < count; i++){
