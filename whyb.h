@@ -8,30 +8,38 @@ typedef struct {
     int cnt;        //메뉴의 수량
     int del;        //메뉴의 삭제 여부
     int get;        //메뉴가 장바구니에 담겼는지 여부
-    int judge; //월드컵을 위한 판단 변수 (1 : 생존, 2 : )
 }food;
+
 
 typedef struct {
     char userID[40];
     int point;
 }member;
 
-int loadData(food *f[]);    //기존 메뉴판 불러오기
-int selectMode();           //메뉴판 변경 모드, 주문 모드, 메뉴 고르기 모드를 선택할 수 있음
-int selectMenuOne();        
-int selectMenuTwo();
-int selectMenuThree();
+
+// Mode 1 functions - Junghwan
+int selectMenuOne(); 
 int selectFoodType();
 int addFood(food *f);
 void readFood(food f);
-void updateFood(food *f);
-void deleteFood(food *f);
 void listFood(food *f[], int count);
 int selectFoodNo(food *f[], int count);
-void saveData(food *f[], int count);
+void updateFood(food *f);
+void deleteFood(food *f);
 void searchName(food *f[], int count);
-void randomPick(food *f[], int count);
+void saveData(food *f[], int count);
+
+
+// Mode 2 functions - Hyunjun
+int selectMenuTwo();
+int loadData(food *f[]);    //기존 메뉴판 불러오기
+void randomPick(food *f[], int count);       
 void worldCupPick(food *f[], int count);
+void foodPicker(food *temp[], int countMenu);
+
+
+// Mode 3 functions - Seunghee
+int selectMenuThree();
 int loadMyFood(food *mf[]);
 void saveMyFood(food *mf[], int myCnt);
 int loadMemberData(member *m[]);
@@ -43,4 +51,5 @@ int searchMember(member *f[], int memberCnt, int buyCnt);
 void saveMemberData(member *m[], int memberCnt);
 
 
-
+// whyb.c
+int selectMode();     //메뉴판 변경 모드, 주문 모드, 메뉴 고르기 모드를 선택할 수 있음
