@@ -8,7 +8,7 @@
 #include <time.h>
 
 int loadData(food *f[]){
-   const char* filename = "menu_data.txt";
+   const char* filename = "saved_menu_data.txt";
     FILE* file = fopen(filename, "r");
 
     if (file != NULL) {
@@ -16,7 +16,7 @@ int loadData(food *f[]){
         int dataCount = 0;
         char line[256];
         while (fgets(line, sizeof(line), file) != NULL) {
-            scanf(line, "9s %d %d %d %d %d", 
+            scanf(line, "%s %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -112,6 +112,7 @@ void worldCupPick(food *f[], int count){//현준
     foodPicker(temp, countMenu);
 }
 
+// Helper function for worldCupPick. - Junghwan
 void foodPicker(food *temp[], int countMenu) {
 
     int i = 0;
