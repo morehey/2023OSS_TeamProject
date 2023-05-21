@@ -17,7 +17,7 @@ int loadData(food *f[]) {
         while (fgets(line, sizeof(line), file) != NULL) {
             f[dataCount] = malloc(sizeof(food)); // Allocate memory for the food structure
 
-            sscanf(line, "%s %d %d %d %d %d", 
+            sscanf(line, "%[^0-9] %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -43,20 +43,15 @@ int loadData(food *f[]) {
     }
 }
 
-
-
-
-
+// Menu two interface
 int selectMenuTwo(){
-     //menu 1 : random pick
-     //menu 2 : worldcuup pick
-     //menu 0 : quit
+
     int num;
 
-    printf("\t1 : totaly random pick \n");
-    printf("\t2 : pick by world cup \n" );
-    printf("\t0 : quit ");
-
+    printf("\n\t0 : Return to main menu \n");
+    printf("\t1 : Totaly random pick \n");
+    printf("\t2 : Pick by world cup \n" );
+    printf("\n>> Enter a number : ");
     scanf("%d", &num);
 
     return num;
@@ -87,7 +82,7 @@ void randomPick(food *f[], int count){
         
     }
     
-    printf("we recommend you a %s \n", f[num]->name);
+    printf("\n\t>> We recommend you a %s! <<\n\n", f[num]->name);
 
 }
 
@@ -98,7 +93,7 @@ void worldCupPick(food *f[], int count){//현준
     printf("\n\n\tWelcome to food worldcup!\n");
     printf("\t-------------------------\n\n");
     printf("\tDo you want to start your favourite food world cup?\n");
-    printf("\tyou can keep choosing a menu that seizes your mind,\n");
+    printf("\tYou can keep choosing a menu that seizes your mind,\n");
     printf("\tuntil there are only one menu left.\n");
     printf("\tFirst, you have to choose what type of food you perfer.\n\n");
 
@@ -123,7 +118,7 @@ void foodPicker(food *temp[], int countMenu) {
     int add = 0;
     int select;
 
-    printf("\n\twhich one do you prefer?\n");
+    printf("\n\tWhich one do you prefer?\n");
     printf("\t------------------------\n");
 
     if (temp[i]->del == 0) {
