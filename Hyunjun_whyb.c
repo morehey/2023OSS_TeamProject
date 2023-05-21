@@ -7,17 +7,16 @@
 #include "whyb.h"
 #include <time.h>
 
-int loadData(food *f[]) {
-    const char* filename = "saved_menu_data.txt";
+int loadData(food *f[]){
+   const char* filename = "saved_menu_data.txt";
     FILE* file = fopen(filename, "r");
 
     if (file != NULL) {
+
         int dataCount = 0;
         char line[256];
         while (fgets(line, sizeof(line), file) != NULL) {
-            f[dataCount] = malloc(sizeof(food)); // Allocate memory for the food structure
-
-            sscanf(line, "%s %d %d %d %d %d", 
+            scanf(line, "%s %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -31,20 +30,17 @@ int loadData(food *f[]) {
 
         fclose(file);
 
-        printf("Data loaded\n");
+        printf("data loaded\n");
 
-        // Return data count
+        // return data count
         return dataCount;
     } else {
-        printf("There is no data\n");
+        printf("there is no data\n");
 
-        // Return 0 because there is no data
+        // return 0 because there is nodata
         return 0;
     }
 }
-
-
-
 
 
 int selectMenuTwo(){
@@ -95,62 +91,83 @@ void worldCupPick(food *f[], int count){//현준
      //SelectFoodType 통해서 종류 정하기
      //type 일치, delete 안된 메뉴 중 월드컵 실시
      //최종 메뉴 print
-    printf("\n\n\tWelcome to food worldcup!\n");
-    printf("\t-------------------------\n\n");
-    printf("\tDo you want to start your favourite food world cup?\n");
-    printf("\tyou can keep choosing a menu that seizes your mind,\n");
-    printf("\tuntil there are only one menu left.\n");
-    printf("\tFirst, you have to choose what type of food you perfer.\n\n");
+    
+    int countavailable =0;
+    int type;
+    int j = 0 ; 
+    type = selectFoodType();
 
-    int type = selectFoodType();
-    int countMenu = 0;
-    food *temp[SIZE];
+    countavailable = countAvailable(f, count, type);
 
-// Copy datas in original food menu with chosen menu type, excluding the deleted ones.
-    for (int i = 0; i < count; i++)
-        if (f[i]->del == 1 && f[i]->type == type) {
-            temp[i] = f[i];
-            countMenu++;
+    food * temp[countavailable];
+
+    for(int i = 0 ; i <count ; i++){
+        if(f[i]->del==1 && f[i]->type == type){
+            temp[j] = f[i];
+            temp[j]->round = 1;
+            j++;
         }
+    }
 
-    foodPicker(temp, countMenu);
+    worldCupHelper(temp , countavailable , 1);
+
+
 }
 
-// Helper function for worldCupPick. - Junghwan
-void foodPicker(food *temp[], int countMenu) {
 
-    int i = 0;
-    int add = 0;
+
+int countAvailable(food* f[] , int count , int type){
+    int countavailable = 0;
+
+    for(int i = 0 ; i <count ; i++){
+        if(f[i]->del==1 && f[i]->type == type){
+            countavailable ++;
+        }
+    }
+    return countavailable;
+}
+
+void worldCupHelper(food * f[] , int countavailable, int a){
     int select;
+    int temp = countavailable;
+    
 
-    printf("\n\twhich one do you prefer?\n");
-    printf("\t------------------------\n");
+    if(countavailable == 1){
+        printf("\tWorldCup finished!\n");
+        printf("\t------------------\n");
+        printf("\tYour best pick is %s!\n\n", f[0]->name);
+    }else{
+        for(int a = 0 ; a < countavailable ; a= a+2){
+            if(a==countavailable-1){
+                f[a]->round++;
+            }else{
+                printf("\n\t1 : %s | 2 : %s\n\n", f[a]->name, f[a+1]->name);
+                printf(" >> Enter the number : ");
+                scanf("%d", &select);
 
-    if (temp[i]->del == 0) {
-        printf("No data");
-        return;
-    }
-
-    while (countMenu > 1) {
-
-        printf("\n\t1 : %s | 2 : %s\n\n", temp[i]->name, temp[i+add+1]->name);
-        printf(" >> Enter the number : ");
-        scanf("%d", &select);
-
-        if (select == 1) {
-            temp[i]->del = 0;
-            add++;
+                if (select == 1) {
+                    f[a]->round++;
+                    temp --;
+                }
+                else {
+                    f[a+1]->round++;
+                    temp--;
+                }
+            }
         }
-        else {
-            temp[i+1]->del = 0;
-            i++;
+
+        food* winners[temp];
+        int b=0;
+        
+        for(int i = 0 ; i <temp ; i++){
+            if(f[i]->round==2){
+                winners[b] = f[i];
+                b++;
+            }
         }
-        countMenu--;
+        a++;
 
+        worldCupHelper(winners , temp , a);
+        
     }
-
-    printf("\tWorldCup finished!\n");
-    printf("\t------------------\n");
-    printf("\tYour best pick is %s!\n\n", temp[i]->name);
-
 }
