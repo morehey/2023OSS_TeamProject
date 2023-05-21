@@ -6,7 +6,6 @@
 
 int selectMode(){
 
-    char buf[SIZE];
     int menu;
 
     printf("\n\tWhy Bother Choose Menu? Use whyb instead!\n");
@@ -18,8 +17,6 @@ int selectMode(){
     printf("\t4 : quit\n\n");
     printf("=> which mode do you want to start? ");
 
-    fgets(buf, SIZE, stdin);   
-    menu = atoi(buf);
-
+    scanf("%d", &menu);
     return menu;
 }

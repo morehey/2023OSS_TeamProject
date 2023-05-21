@@ -97,12 +97,16 @@ int main(){
         else if (mode == 3) {
 
             bool repeat = true;
-            while (repeat) {
+            
+            myCnt = loadMyFood(myFo);
+            memberCnt = loadMemberData(mem);
+            memIndex = memberCnt;
 
+            while (repeat) {
                 menu = selectMenuThree();
-                myCnt = loadMyFood(myFo);
-                memberCnt = loadMemberData(mem);
-                memIndex = memberCnt;
+
+                
+                
 
                 if (menu == 0) repeat = false;
                 else if (menu == 1){

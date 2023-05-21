@@ -16,7 +16,6 @@ int selectFoodType(){//정환
 
 int selectMenuOne() {
 
-    char buf[SIZE];
     int menu;
     
     printf("\t\t\nMenu  -  Select Menu\n");
@@ -30,31 +29,22 @@ int selectMenuOne() {
     printf("\t0 : EXit\n\n");
     printf("Enter a number : ");
 
-    fgets(buf, SIZE, stdin);   
-    menu = atoi(buf);
+    scanf("%d", &menu);
 
     return menu;
 }
 
 int addFood(food *f){   //정환
 
-    char buf[SIZE];
-
     printf("\nEnter the name of the menu: ");
-    fgets(f->name, SIZE, stdin);
-    f->name[strlen(f->name)-1] = '\0';
+    scanf("\n");
+    scanf("%[^\n]s", f->name );
     
     printf("Menu type? (Meal : 1, Drink : 2, Side : 3): ");
-    fgets(buf, SIZE, stdin);
-    f->type = atoi(buf);
+    scanf("%d", &f->type);
     
     printf("Price?: ");
-    fgets(buf, SIZE, stdin);
-    f->price = atoi(buf);
-    
-    printf("Quantity?: ");
-    fgets(buf, SIZE, stdin);
-    f->cnt = atoi(buf);
+    scanf("%d", &f->price);
 
     f->del = 1;
     
@@ -105,20 +95,17 @@ void updateFood(food *f){//정환
     printf("-------------------\n\n");
 
     printf("\nEnter the name of the menu: ");
-    fgets(f->name, SIZE, stdin);
-    f->name[strlen(f->name)-1] = '\0';
+    scanf("\n");
+    scanf("%[^\n]s", f->name );
     
     printf("Menu type? (Meal : 1, Dring : 2, Side : 3): ");
-    fgets(buf, SIZE, stdin);
-    f->type = atoi(buf);
+    scanf("%d", &f->type);
     
     printf("Price?: ");
-    fgets(buf, SIZE, stdin);
-    f->price = atoi(buf);
-    
-    printf("Quantity?: ");
-    fgets(buf, SIZE, stdin);
-    f->cnt = atoi(buf);
+    scanf("%d", &f->price);
+
+    f->cnt = 0;
+    f->del = 1;
     
     printf("Menu has been successfully fixed!\n");
 }

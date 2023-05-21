@@ -22,8 +22,7 @@ int selectMenuThree(){
     printf("0 : Quit\n\n");
     printf("=> which menu do you want to start?");
 
-    fgets(buf, SIZE, stdin);   
-    menu = atoi(buf);
+    scanf("%d", &menu);
 
     return menu;
 }
@@ -114,6 +113,7 @@ int countBuy(food *mf[], int myCnt){
         else totalCnt++;
     }
 
+
     return totalCnt;
   
 }
@@ -126,6 +126,8 @@ int Buy(food *mf[], int myCnt){
         if (mf[i] -> del == 0 ) continue;
         else totalPrice+=mf[i]->price;
     }
+        printf("결제할 총 금액은 %d원입니다.",totalPrice);
+
 
     return totalPrice;
   
