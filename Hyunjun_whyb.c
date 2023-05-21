@@ -49,9 +49,9 @@ int selectMenuTwo(){
      //menu 0 : quit
     int num;
 
-    printf(" 1 : totaly random pick \n");
-    printf(" 2 : pick by world cup \n" );
-    printf(" 0 : quit ");
+    printf("\t1 : totaly random pick \n");
+    printf("\t2 : pick by world cup \n" );
+    printf("\t0 : quit ");
 
     scanf("%d", &num);
 
@@ -99,8 +99,53 @@ void worldCupPick(food *f[], int count){//현준
     printf("\tFirst, you have to choose what type of food you perfer.\n\n");
 
     int type = selectFoodType();
+    int countMenu = 0;
+    food *temp[SIZE];
 
-    
+// Copy datas in original food menu with chosen menu type, excluding the deleted ones.
+    for (int i = 0; i < count; i++)
+        if (f[i]->del == 1 && f[i]->type == type) {
+            temp[i] = f[i];
+            countMenu++;
+        }
 
+    foodPicker(temp, countMenu);
+}
+
+void foodPicker(food *temp[], int countMenu) {
+
+    int i = 0;
+    int add = 0;
+    int select;
+
+    printf("\n\twhich one do you prefer?\n");
+    printf("\t------------------------\n");
+
+    if (temp[i]->del == 0) {
+        printf("No data");
+        return;
+    }
+
+    while (countMenu > 1) {
+
+        printf("1 : %s | 2 : %s\n\n", temp[i]->name, temp[i+add+1]->name);
+        printf(" >> Enter the number : ");
+        scanf("%d", &select);
+
+        if (select == 1) {
+            temp[i]->del = 0;
+            add++;
+        }
+        else {
+            temp[i+1]->del = 0;
+            i++;
+        }
+        countMenu--;
+
+    }
+
+    printf("WorldCup finished!\n");
+    printf("------------------\n");
+    printf("Your best pick is %s!\n\n", temp[i]->name);
 
 }
