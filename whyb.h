@@ -8,6 +8,7 @@ typedef struct {
     int cnt;        //메뉴의 수량
     int del;        //메뉴의 삭제 여부
     int get;        //메뉴가 장바구니에 담겼는지 여부
+    int round;  //월드컵을 위한 판단 변수
 }food;
 
 
