@@ -50,6 +50,7 @@ int Buy(food *mf[], int myCnt);
 void readMember(member m);
 int searchMember(member *f[], int memberCnt, int buyCnt);
 void saveMemberData(member *m[], int memberCnt);
+void worldCupHelper(food * f[] , int countavailable, int a);
 
 
 // whyb.c

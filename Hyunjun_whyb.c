@@ -103,7 +103,11 @@ void worldCupPick(food *f[], int count){//현준
     int j = 0; 
     type = selectFoodType();
 
-    countavailable = countAvailable(f, count, type);
+    for(int i = 0 ; i <count ; i++){
+        if(f[i]->del==1 && f[i]->type == type){
+            countavailable ++;
+        }
+    }
 
     food* temp[SIZE];
 
@@ -116,19 +120,6 @@ void worldCupPick(food *f[], int count){//현준
     }
 
     worldCupHelper(temp , countavailable , 1);
-}
-
-
-
-int countAvailable(food* f[] , int count , int type){
-    int countavailable = 0;
-
-    for(int i = 0 ; i <count ; i++){
-        if(f[i]->del==1 && f[i]->type == type){
-            countavailable ++;
-        }
-    }
-    return countavailable;
 }
 
 void worldCupHelper(food * f[] , int countavailable, int a){
