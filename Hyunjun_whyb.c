@@ -67,6 +67,10 @@ void randomPick(food *f[], int count){
     int judge = 0;
     srand(time(NULL));
 
+    printf("\n\n\tWhy bother choose menu? We will choose for you!\n");
+    printf("\t-----------------------------------------------\n");
+    printf("\tWhat type of food would you like to eat?");
+
     while(judge==0){
         int randomNumber = rand() % 100;
 
