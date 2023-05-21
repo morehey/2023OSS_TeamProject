@@ -8,7 +8,7 @@
 int main(){
 
     int mode;
-//    int t;          //food type - unused variable?
+    int t;          //food type
     int index;      //메뉴판 인덱스
     int myIndex = 0;    //장바구니 인덱스
     int memIndex;   //회원 인덱스

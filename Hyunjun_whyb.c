@@ -16,9 +16,7 @@ int loadData(food *f[]){
         int dataCount = 0;
         char line[256];
         while (fgets(line, sizeof(line), file) != NULL) {
-            f[dataCount] = malloc(sizeof(food)); // Allocate memory for the food structure
-
-            sscanf(line, "%[^0-9] %d %d %d %d %d", 
+            scanf(line, "%s %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -44,15 +42,18 @@ int loadData(food *f[]){
     }
 }
 
-// Menu two interface
+
 int selectMenuTwo(){
-
+     //menu 1 : random pick
+     //menu 2 : worldcuup pick
+     //menu 0 : quit
     int num;
+    printf("\n\n\tWhy bother choose menu? We will choose for you!\n");
+    printf("\t-----------------------------------------------\n");
+    printf("\t1 : totaly random pick \n");
+    printf("\t2 : pick by world cup \n" );
+    printf("\t0 : quit ");
 
-    printf("\n\t0 : Return to main menu \n");
-    printf("\t1 : Totaly random pick \n");
-    printf("\t2 : Pick by world cup \n" );
-    printf("\n>> Enter a number : ");
     scanf("%d", &num);
 
     return num;
@@ -83,7 +84,7 @@ void randomPick(food *f[], int count){
         
     }
     
-    printf("\n\t>> We recommend you a %s! <<\n\n", f[num]->name);
+    printf("we recommend you a %s \n", f[num]->name);
 
 }
 
@@ -98,9 +99,9 @@ void worldCupPick(food *f[], int count){//현준
     printf("\tuntil there are only one menu left.\n");
     printf("\tFirst, you have to choose what type of food you perfer.\n\n");
     
-    int countavailable = 0;
+    int countavailable =0;
     int type;
-    int j = 0; 
+    int j = 0 ; 
     type = selectFoodType();
 
     for(int i = 0 ; i <count ; i++){
@@ -109,7 +110,7 @@ void worldCupPick(food *f[], int count){//현준
         }
     }
 
-    food* temp[SIZE];
+    food * temp[countavailable];
 
     for(int i = 0 ; i <count ; i++){
         if(f[i]->del==1 && f[i]->type == type){
@@ -151,7 +152,7 @@ void worldCupHelper(food * f[] , int countavailable, int a){
             }
         }
 
-        food* winners[SIZE];
+        food* winners[temp];
         int b=0;
         
         for(int i = 0 ; i <temp ; i++){
