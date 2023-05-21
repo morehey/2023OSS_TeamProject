@@ -7,16 +7,17 @@
 #include "whyb.h"
 #include <time.h>
 
-int loadData(food *f[]){
-   const char* filename = "saved_menu_data.txt";
+int loadData(food *f[]) {
+    const char* filename = "saved_menu_data.txt";
     FILE* file = fopen(filename, "r");
 
     if (file != NULL) {
-
         int dataCount = 0;
         char line[256];
         while (fgets(line, sizeof(line), file) != NULL) {
-            scanf(line, "%s %d %d %d %d %d", 
+            f[dataCount] = malloc(sizeof(food)); // Allocate memory for the food structure
+
+            sscanf(line, "%s %d %d %d %d %d", 
                    f[dataCount]->name,
                    &f[dataCount]->type,
                    &f[dataCount]->price,
@@ -30,17 +31,20 @@ int loadData(food *f[]){
 
         fclose(file);
 
-        printf("data loaded\n");
+        printf("Data loaded\n");
 
-        // return data count
+        // Return data count
         return dataCount;
     } else {
-        printf("there is no data\n");
+        printf("There is no data\n");
 
-        // return 0 because there is nodata
+        // Return 0 because there is no data
         return 0;
     }
 }
+
+
+
 
 
 int selectMenuTwo(){
@@ -129,7 +133,7 @@ void foodPicker(food *temp[], int countMenu) {
 
     while (countMenu > 1) {
 
-        printf("1 : %s | 2 : %s\n\n", temp[i]->name, temp[i+add+1]->name);
+        printf("\n\t1 : %s | 2 : %s\n\n", temp[i]->name, temp[i+add+1]->name);
         printf(" >> Enter the number : ");
         scanf("%d", &select);
 
@@ -145,8 +149,8 @@ void foodPicker(food *temp[], int countMenu) {
 
     }
 
-    printf("WorldCup finished!\n");
-    printf("------------------\n");
-    printf("Your best pick is %s!\n\n", temp[i]->name);
+    printf("\tWorldCup finished!\n");
+    printf("\t------------------\n");
+    printf("\tYour best pick is %s!\n\n", temp[i]->name);
 
 }

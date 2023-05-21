@@ -101,18 +101,19 @@ void updateFood(food *f){//정환
     printf("\nMenu  -  Fix Menu\n");
     printf("-------------------\n\n");
 
-    printf("\nEnter the name of the menu: ");
+    printf("\nEnter the name of the menu : ");
     scanf("\n");
     scanf("%[^\n]s", f->name );
     
     printf("Menu type? (Meal : 1, Dring : 2, Side : 3): ");
     scanf("%d", &f->type);
     
-    printf("Price?: ");
+    printf("Price? : ");
     scanf("%d", &f->price);
 
     f->cnt = 0;
     f->del = 1;
+    f->get = 0;
     
     printf("Menu has been successfully fixed!\n");
 }
@@ -163,8 +164,8 @@ void saveData(food *f[], int count){//정환
     }
 
     for (int i = 0; i < count; i++) {
-        fprintf(file, "%s %d %d %d\n", 
-        f[i]->name, f[i]->type, f[i]->price, f[i]->cnt);
+        fprintf(file, "%s %d %d %d %d %d\n", 
+        f[i]->name, f[i]->type, f[i]->price, f[i]->cnt, f[i]->del, f[i]->get);
     }
 
     fclose(file);
