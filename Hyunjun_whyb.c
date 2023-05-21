@@ -70,7 +70,6 @@ void randomPick(food *f[], int count){
 
     printf("\n\n\tWhy bother choose menu? We will choose for you!\n");
     printf("\t-----------------------------------------------\n");
-    printf("\tWhat type of food would you like to eat?");
 
     while(judge==0){
         int randomNumber = rand() % count;
@@ -92,4 +91,16 @@ void worldCupPick(food *f[], int count){//현준
      //SelectFoodType 통해서 종류 정하기
      //type 일치, delete 안된 메뉴 중 월드컵 실시
      //최종 메뉴 print
+    printf("\tWelcome to food worldcup!\n");
+    printf("\t-------------------------\n\n");
+    printf("\tDo you want to start your favourite food world cup?\n");
+    printf("\tyou can keep choosing a menu that seizes your mind,\n");
+    printf("\tuntil there are only one menu left.\n");
+    pritnf("\tFirst, you have to choose what type of food you perfer.\n\n");
+
+    int type = selectFoodType();
+
+    
+
+
 }
