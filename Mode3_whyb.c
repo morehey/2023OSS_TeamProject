@@ -7,22 +7,23 @@
 
 
 int selectMenuThree(){
-
-    char buf[SIZE];
+    
     int menu;
 
-    printf("1 : Show Menu\n");
-    printf("2 : Show My Cart\n");
-    printf("3 : Add Menu To My Cart\n");
-    printf("4 : Update Menu In My Cart\n");
-    printf("5 : Delete Menu In My Cart\n");
-    printf("6 : Search Menu In My Cart\n");
-    printf("7 : Sava My Cart\n");
-    printf("8 : Order And Earn Point\n");
-    printf("0 : Quit\n\n");
-    printf("=> which menu do you want to start?");
+    printf("\t0 : Return to main menu\n");
+    printf("\t1 : Show Menu\n");
+    printf("\t2 : Show My Cart\n");
+    printf("\t3 : Add Menu To My Cart\n");
+    printf("\t4 : Update Menu In My Cart\n");
+    printf("\t5 : Delete Menu In My Cart\n");
+    printf("\t6 : Search Menu In My Cart\n");
+    printf("\t7 : Sava My Cart\n");
+    printf("\t8 : Order And Earn Point\n\n");
+    
+    printf(">> which menu do you want to start?");
 
     scanf("%d", &menu);
+    printf("\n");
 
     return menu;
 }
@@ -126,7 +127,7 @@ int Buy(food *mf[], int myCnt){
         if (mf[i] -> del == 0 ) continue;
         else totalPrice+=mf[i]->price;
     }
-        printf("결제할 총 금액은 %d원입니다.",totalPrice);
+        printf(">> Total checkout is %d won <<",totalPrice);
 
 
     return totalPrice;
@@ -141,7 +142,7 @@ int searchMember(member *m[], int count, int buyCnt){
     int scnt = 0;
     char search[20];
 
-    printf("what is the name of the member? ");
+    printf(">> what is the name of the member? ");
     scanf("%s", search);
 
     printf("\nNo UserId Point\n");
@@ -153,14 +154,14 @@ int searchMember(member *m[], int count, int buyCnt){
             break;
         }
     }
-    if (scnt == 0 ) printf("=> Not a valid user!");
+    if (scnt == 0 ) printf(">> Not a valid user! <<");
     printf("\n");
 }
 
 
 
 int addMember(member *m, int buyCnt){
-    printf("What is you UserID? ");
+    printf(">> What is you UserID? ");
     scanf("%s", m->userID);
     m->point = 0;
     return 1;

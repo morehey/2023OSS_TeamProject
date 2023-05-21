@@ -1,1 +1,8 @@
-Hamburger 1 10000 10
+Hamburger 1 8500 0 1 0
+Pizza 1 10000 0 1 0
+Chicken 1 20000 0 1 0
+Steak 1 17000 0 1 0
+Spaghetti 1 9000 0 1 0
+Coke 2 1500 0 1 0
+Sprite 2 1500 0 1 0
+Apple Juice 2 3000 0 1 0

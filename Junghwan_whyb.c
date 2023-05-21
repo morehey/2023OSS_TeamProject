@@ -15,7 +15,7 @@ int selectFoodType(){//정환
     printf("\n\n\tType 1 : Meal\n");
     printf("\tType 2 : Drink\n");
     printf("\tType 3 : Side\n\n");
-    printf("Enter the food type number : ");
+    printf(">> Enter the food type number : ");
     scanf("%d", &type);
 
     return type;
@@ -27,14 +27,14 @@ int selectMenuOne() {
     
     printf("\t\t\nMenu  -  Select Menu\n");
     printf("\t----------------------\n\n");
-    printf("\t1 : Read Menu\n");
-    printf("\t2 : Add Menu\n");
-    printf("\t3 : Fix Menu\n");
-    printf("\t4 : Delete Menu\n");
-    printf("\t5 : Search Menu\n");
-    printf("\t6 : Save Menu\n");
-    printf("\t0 : EXit\n\n");
-    printf("Enter a number : ");
+    printf("\t0 : Return to main menu\n");
+    printf("\t1 : Read menu\n");
+    printf("\t2 : Add menu\n");
+    printf("\t3 : Fix menu\n");
+    printf("\t4 : Delete menu\n");
+    printf("\t5 : Search menu\n");
+    printf("\t6 : Save menu\n\n");
+    printf(">> Enter a number : ");
 
     scanf("%d", &menu);
 
@@ -43,19 +43,19 @@ int selectMenuOne() {
 
 int addFood(food *f){   //정환
 
-    printf("\nEnter the name of the menu: ");
+    printf("\n>> Enter the name of the menu: ");
     scanf("\n");
     scanf("%[^\n]s", f->name );
     
-    printf("Menu type? (Meal : 1, Drink : 2, Side : 3): ");
+    printf(">> Menu type? (Meal : 1, Drink : 2, Side : 3): ");
     scanf("%d", &f->type);
     
-    printf("Price?: ");
+    printf(">> Price?: ");
     scanf("%d", &f->price);
 
     f->del = 1;
     
-    printf("Menu has been successfully added!\n");
+    printf(">> Menu has been successfully added! <<\n");
     
     return 1;
 
@@ -89,33 +89,31 @@ void listFood(food *f[], int count){//정환
 int selectFoodNo(food *f[], int count){//정환
     int num;
     listFood(f, count);
-    printf("What is the menu number? (Cancle :0) : ");
+    printf(">> What is the menu number? (Cancle :0) : ");
     scanf("%d", &num);
     return num;
 }
 
 void updateFood(food *f){//정환
 
-    char buf[SIZE];
-
     printf("\nMenu  -  Fix Menu\n");
     printf("-------------------\n\n");
 
-    printf("\nEnter the name of the menu : ");
+    printf("\n>> Enter the name of the menu : ");
     scanf("\n");
     scanf("%[^\n]s", f->name );
     
-    printf("Menu type? (Meal : 1, Dring : 2, Side : 3): ");
+    printf(">> Menu type? (Meal : 1, Dring : 2, Side : 3): ");
     scanf("%d", &f->type);
     
-    printf("Price? : ");
+    printf(">> Price? : ");
     scanf("%d", &f->price);
 
     f->cnt = 0;
     f->del = 1;
     f->get = 0;
     
-    printf("Menu has been successfully fixed!\n");
+    printf(">> Menu has been successfully fixed! <<\n");
 }
 
 void deleteFood(food *f){//정환
@@ -134,7 +132,7 @@ void searchName(food *f[], int count){//정환
     printf("\nMenu  -  Search Menu\n");
     printf("----------------------\n\n");
 
-    printf("Enter the name of the menu: ");
+    printf(">> Enter the name of the menu: ");
     fgets(menuName, SIZE, stdin);
     menuName[strlen(menuName)-1] = '\0';
     printf("\n");

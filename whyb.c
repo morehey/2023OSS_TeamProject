@@ -10,13 +10,14 @@ int selectMode(){
 
     printf("\n\tWhy Bother Choose Menu? Use whyb instead!\n");
     printf("\t-----------------------------------------\n");
-    printf("\tchoose mode\n\n");
-    printf("\t1 : menu CRUD\n");
-    printf("\t2 : help your choice\n");
-    printf("\t3 : menu order\n");
-    printf("\t4 : quit\n\n");
-    printf("=> which mode do you want to start? ");
+    printf("\tChoose mode\n\n");
+    printf("\t0 : Exit\n");
+    printf("\t1 : Menu CRUD\n");
+    printf("\t2 : Help your choice\n");
+    printf("\t3 : Menu order\n\n");
+    printf(">> which mode do you want to start? ");
 
     scanf("%d", &menu);
+    
     return menu;
 }
