@@ -11,6 +11,7 @@ int selectFoodType(){//정환
     
     int type;
 
+    printf("\tWhat type of food would you like to eat?");
     printf("\n\n\tType 1 : Meal\n");
     printf("\tType 2 : Drink\n");
     printf("\tType 3 : Side\n\n");
@@ -66,7 +67,7 @@ void readFood(food f){//정환
         return;
     }
     else {
-        printf("| %s\t   | %d\t\t | %d won\t | %d\n", f.name, f.type, f.price, f.cnt);
+        printf("| %-14s   | %-4d | %d won\t | %d\n", f.name, f.type, f.price, f.cnt);
     }
     //해당 메뉴의 이름, 가격 print
 }
@@ -74,7 +75,7 @@ void readFood(food f){//정환
 
 void listFood(food *f[], int count){//정환
 
-    printf("\nnumber\t| Name\t\t   | Type\t | Price\t | Quantity\n");
+    printf("\nnumber\t| Name\t\t   | Type | Price\t | Quantity\n");
     printf("------------------------------------------------------------------\n");
     for(int i = 0; i < count; i++){
         if(f[i] == NULL) continue;
