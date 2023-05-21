@@ -64,6 +64,7 @@ void randomPick(food *f[], int count){
      //type 일치, delete 안된 메뉴 중 random으로 나온 값 print
 
     int type;
+    int num;
     int judge = 0;
     srand(time(NULL));
 
@@ -72,13 +73,18 @@ void randomPick(food *f[], int count){
     printf("\tWhat type of food would you like to eat?");
 
     while(judge==0){
-        int randomNumber = rand() % 100;
+        int randomNumber = rand() % count;
 
         type = selectFoodType();
 
-        // if(f[randomNumber]->s)
-        // }
+        if(f[randomNumber]->type==type && f[randomNumber]->del!=0){
+            judge = 1;
+            num = randomNumber;
+        }
+        
     }
+    
+    printf("we recommend you a %s \n", f[num]->name);
 
 }
 
