@@ -9,9 +9,15 @@
 
 int selectFoodType(){//정환
     
-    //Type 1 : ~
-    //Type 2 : ~
-    //return Type 번호
+    int type;
+
+    printf("\n\n\tType 1 : Meal\n");
+    printf("\tType 2 : Drink\n");
+    printf("\tType 3 : Side\n\n");
+    printf("Enter the food type number : ");
+    scanf("%d", &type);
+
+    return type;
 }
 
 int selectMenuOne() {
