@@ -28,35 +28,42 @@ int selectMenuThree(){
     return menu;
 }
 
-// int loadMyFood(food *mf[]){
-//     const char* filename = "myFood_data.txt";
-//     FILE* file = fopen(filename, "r");
+int loadMyFood(food *mf[]) {
+    const char* filename = "myFood_data.txt";
+    FILE* file = fopen(filename, "r");
 
-//     if (file != NULL) {
+    if (file != NULL) {
+        int dataCount = 0;
 
-//         int myFoodCount = 0;
-//         char line[256];
-//         while (fgets(line, sizeof(line), file) != NULL) {
-//             scanf(line, "9s %d %d %d", 
-//                    mf[myFoodCount]->name,
-//                    &mf[myFoodCount]->type,
-//                    &mf[myFoodCount]->price,
-//                    &mf[myFoodCount]->cnt
-//                    );
+        while (!feof(file)) {
+            mf[dataCount] = malloc(sizeof(food)); // 메모리 할당
 
-//             myFoodCount++;
-//         }
+            fscanf(file, "%d %d %d %d %d %[^\n]s\n",  
+                   &mf[dataCount]->type,
+                   &mf[dataCount]->price,
+                   &mf[dataCount]->cnt,
+                   &mf[dataCount]->del,
+                   &mf[dataCount]->get,
+                   mf[dataCount]->name
+            );
 
-//         fclose(file);
+            dataCount++;
+        }
 
-//         printf("data loaded\n");
-//         return myFoodCount;
-//     } else {
-//         printf("there is no data\n");
-//         return 0;
-//     }
-//     return 0;
-// }
+        fclose(file);
+
+        printf("data loaded\n");
+
+        // 반환: 데이터 개수
+        return dataCount;
+    } else {
+        printf("there is no data\n");
+
+        // 반환: 데이터가 없음
+        return 0;
+    }
+}
+
 
 void saveMyFood(food *f[], int myCnt){
 
@@ -65,8 +72,8 @@ void saveMyFood(food *f[], int myCnt){
     file = fopen("myFood_data.txt", "wt");
 
     for (int i = 0; i < myCnt; i++) {
-        fprintf(file, "%s %d %d %d\n", 
-        f[i]->name, f[i]->type, f[i]->price, f[i]->cnt);
+        fprintf(file, "%d %d %d %d %d %s\n", 
+        f[i]->type, f[i]->price, f[i]->cnt, f[i]->del, f[i]->get, f[i]->name);
     }
 
     fclose(file);
@@ -74,33 +81,36 @@ void saveMyFood(food *f[], int myCnt){
     printf("\n>> MyFood data saved to file successfully <<\n");
 }
 
-// int loadMemberData(member *m[]){
-//     const char* filename = "Member_data.txt";
-//     FILE* file = fopen(filename, "r");
+int loadMember(member *m[]) {
+    const char* filename = "saved_member_data.txt";
+    FILE* file = fopen(filename, "r");
 
-//     if (file != NULL) {
+    if (file != NULL) {
+        int dataCount = 0;
 
-//         int MemberCount = 0;
-//         char line[256];
-//         while (fgets(line, sizeof(line), file) != NULL) {
-//             scanf(line, "9s %d %d %d", 
-//                    m[MemberCount]->userID,
-//                    &m[MemberCount]->point
-//                    );
+        while (!feof(file)) {
+            m[dataCount] = malloc(sizeof(member)); // 메모리 할당
 
-//             MemberCount++;
-//         }
+            fscanf(file, "%s %d",  
+                   m[dataCount]->userID,
+                   &m[dataCount]->point
+            );
 
-//         fclose(file);
+            dataCount++;
+        }
 
-//         printf("data loaded\n");
-//         return MemberCount;
-//     } else {
-//         printf("there is no data\n");
-//         return 0;
-//     }
-//     return 0;
-// }
+        fclose(file);
+
+
+        // 반환: 데이터 개수
+        return dataCount;
+    } else {
+
+        // 반환: 데이터가 없음
+        return 0;
+    }
+}
+
 
 int countBuy(food *mf[], int myCnt){
     int totalCnt = 0;
@@ -154,16 +164,15 @@ int searchMember(char search[30], member *m[], int count, int buyCnt){
 
 
 int addMember(char search[30], member *m, int buyCnt){
-    scanf("%s", m->userID);
+    strcpy(m->userID,search);
     m->point = 0;
     return 1;
-    //I want to add the service which makes member doesn't duplicate. If time is possible, I will try it.
 }
 
 void saveMemberData(member *m[], int memberCnt){
     FILE *file;
 
-    file = fopen("myFood_data.txt", "w");
+    file = fopen("saved_member_data.txt", "w");
 
     if (file == NULL) {
         printf("Failed to open the file for writing.\n");

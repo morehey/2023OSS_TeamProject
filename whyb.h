@@ -42,7 +42,7 @@ void worldCupHelper(food * f[] , int countavailable, int a);
 int selectMenuThree();
 int loadMyFood(food *mf[]);
 void saveMyFood(food *mf[], int myCnt);
-int loadMemberData(member *m[]);
+int loadMember(member *m[]);
 int addMember(char search[30], member *m, int buyCnt);
 int countBuy(food *mf[], int myCnt);
 int Buy(food *mf[], int myCnt);

@@ -17,13 +17,13 @@ int loadData(food *f[]) {
         while (!feof(file)) {
             f[dataCount] = malloc(sizeof(food)); // 메모리 할당
 
-            fscanf(file, "%s %d %d %d %d %d",  
-                   f[dataCount]->name,
+            fscanf(file, "%d %d %d %d %d %[^\n]s\n",  
                    &f[dataCount]->type,
                    &f[dataCount]->price,
                    &f[dataCount]->cnt,
                    &f[dataCount]->del,
-                   &f[dataCount]->get
+                   &f[dataCount]->get,
+                   f[dataCount]->name
             );
 
             dataCount++;
@@ -53,7 +53,7 @@ int selectMenuTwo(){
     printf("\t-----------------------------------------------\n");
     printf("\t1 : totaly random pick \n");
     printf("\t2 : pick by world cup \n" );
-    printf("\t0 : quit ");
+    printf("\t0 : quit \n");
 
     printf(">> Enter a number : ");
     scanf("%d", &num);
