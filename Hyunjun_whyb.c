@@ -4,24 +4,44 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include <unistd.h>
 #include "whyb.h"
 #include <time.h>
 
-// int loadData(food *f){
-//     int i = 0;
-//     FILE *fp;
-//     fp = fopen("saved_menu_data.txt", "rt");
-//     while(1){
-//         fscanf(fp, "%d", &f[i].type);
-//         if (feof(fp)) break;
-//         fscanf(fp, "%d %d %d %d %[^\n]s\n", &f[i].price, &f[i].cnt, &f[i].del, &f[i].get, f[i].name);
-//         i++;
-//     }
-//     if (i == 0 ) printf("there is no data\n");
-//     else printf("data loaded\n");
-//     return i;
-// }
+int loadData(food *f[]) {
+    const char* filename = "saved_menu_data.txt";
+    FILE* file = fopen(filename, "r");
+
+    if (file != NULL) {
+        int dataCount = 0;
+
+        while (!feof(file)) {
+            f[dataCount] = malloc(sizeof(food)); // 메모리 할당
+
+            fscanf(file, "%s %d %d %d %d %d",  
+                   f[dataCount]->name,
+                   &f[dataCount]->type,
+                   &f[dataCount]->price,
+                   &f[dataCount]->cnt,
+                   &f[dataCount]->del,
+                   &f[dataCount]->get
+            );
+
+            dataCount++;
+        }
+
+        fclose(file);
+
+        printf("data loaded\n");
+
+        // 반환: 데이터 개수
+        return dataCount;
+    } else {
+        printf("there is no data\n");
+
+        // 반환: 데이터가 없음
+        return 0;
+    }
+}
 
 
 int selectMenuTwo(){
