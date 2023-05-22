@@ -51,7 +51,7 @@ int main(){
                 else if (menu == 3){
                     int no = selectFoodNo(fo, index);
                     if (no == 0){
-                        printf("=> Cancled!\n");
+                        printf("=> Canceled!\n");
                         continue;
                     }
                     updateFood(fo[no-1]);
@@ -99,13 +99,10 @@ int main(){
         else if (mode == 3) {
 
             bool repeat = true;
-            
-            // myCnt = loadMyFood(myFo);
-            // memberCnt = loadMemberData(mem);
-            // memIndex = memberCnt;
-
+       
                         
-            myCnt = 0;
+            myCnt = loadMyFood(myFo);
+            myIndex = myCnt;
             
 
 
@@ -119,17 +116,17 @@ int main(){
                 }
                 else if (menu == 2){
                     if (myCnt > 0 ) listFood(myFo, myIndex);
-                    else printf("There are no menu in the cart\n");
+                    else printf("\nThere are no menu in the cart\n");
 
                 }
                 else if (menu == 3){
-                    myFo[myIndex] = (food *)malloc(sizeof(food));
+                    myFo[myCnt] = (food *)malloc(sizeof(food));
                     myCnt += addFood(myFo[myIndex++]);
                 }
                 else if (menu == 4){
                     int no = selectFoodNo(myFo, myIndex);
                         if (no == 0){
-                            printf("=> Cancled!\n");
+                            printf("=> Canceled!\n");
                             continue;
                         }
                         updateFood(myFo[no-1]);
@@ -149,7 +146,7 @@ int main(){
                             myCnt--;
                             printf("=> Deleted!\n");
                         }
-                        else printf("=> Cancled!");
+                        else printf("=> Canceled!");
                 }
                 else if (menu == 6){
                     searchName(myFo, myIndex);
@@ -165,13 +162,13 @@ int main(){
                         printf("You should take one more menu\n");
                         continue;
                     }
-                    buyCnt = Buy(myFo, myCnt);
+                    Buy(myFo, myCnt);
                     buyCnt = countBuy(myFo, myCnt);
                     printf(">> what is the userID of for the point? ");
                     scanf("%s", search);
                     memberIs = searchMember(search, mem, memberCnt, buyCnt);
-                    if (memberIs == 1){
-                        mem[memIndex] = (member *)malloc (sizeof(member));
+                    if (memberIs == 0){
+                        mem[memberCnt] = (member *)malloc (sizeof(member));
                         memberCnt += addMember(search, mem[memIndex++], buyCnt);
                     }
                     saveMemberData(mem, memIndex);

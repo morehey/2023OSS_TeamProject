@@ -65,15 +65,20 @@ int loadMyFood(food *mf[]) {
 }
 
 
-void saveMyFood(food *f[], int myCnt){
+void saveMyFood(food *mf[], int myCnt){
 
     FILE *file;
 
-    file = fopen("myFood_data.txt", "wt");
+    file = fopen("myFood_data.txt", "w");
+
+    if (file == NULL) {
+        printf("Failed to open the file for writing.\n");
+        return;
+    }
 
     for (int i = 0; i < myCnt; i++) {
         fprintf(file, "%d %d %d %d %d %s\n", 
-        f[i]->type, f[i]->price, f[i]->cnt, f[i]->del, f[i]->get, f[i]->name);
+        mf[i]->type, mf[i]->price, mf[i]->cnt, mf[i]->del, mf[i]->get, mf[i]->name);
     }
 
     fclose(file);
@@ -140,24 +145,28 @@ int Buy(food *mf[], int myCnt){
 }
 
 void readMember(member m){
-    printf("%s %d", m.userID, m.point);
+    printf("| %-14s   | %-4d", m.userID, m.point);
 }
 
 int searchMember(char search[30], member *m[], int count, int buyCnt){
     int scnt = 0;
 
-    printf("\nNo UserId Point\n");
+    printf("\nNo -- UserId -- Point\n");
     printf("===============================\n");
     for (int i = 0 ; i < count ; i ++){
-        if (strstr(m[i]->userID, search)){
-            printf("%2d", i+1);
+        if (strcmp(m[i]->userID, search)==0){
+            printf("%d \t", i+1);
             readMember(*m[i]);
+            scnt++;
+            m[i]->point+=buyCnt;
             break;
         }
     }
-    if (scnt == 0 ) printf(">> Not a valid user!");
-    printf("\n I will add this ID <<");
-    printf("\n");
+    if (scnt == 0 ) {
+        printf(">> Not a valid user!\n");
+        printf("\n I will add this ID <<");
+        printf("\n");
+    }
     return scnt;
 }
 
