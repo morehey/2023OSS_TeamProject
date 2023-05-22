@@ -55,7 +55,7 @@ int selectMenuTwo(){
     printf("\t2 : pick by world cup \n" );
     printf("\t0 : quit \n");
 
-    printf(">> Enter a number : ");
+    printf("\n>> Enter a number : ");
     scanf("%d", &num);
 
     return num;
@@ -117,7 +117,6 @@ void worldCupPick(food *f[], int count){//현준
             countavailable ++;
         }
     }
-
     food * temp[countavailable];
 
     for(int i = 0 ; i <count ; i++){
@@ -131,19 +130,21 @@ void worldCupPick(food *f[], int count){//현준
     worldCupHelper(temp , countavailable , 1);
 }
 
-void worldCupHelper(food * f[] , int countavailable, int a){
+void worldCupHelper(food * f[] , int countavailable, int round){
     int select;
     int temp = countavailable;
     
 
     if(countavailable == 1){
-        printf("\tWorldCup finished!\n");
+        printf("\n\n\tWorldCup finished!\n");
         printf("\t------------------\n");
         printf("\tYour best pick is %s!\n\n", f[0]->name);
     }else{
+        printf("\n\t Round %d\n" ,round);
         for(int a = 0 ; a < countavailable ; a= a+2){
             if(a==countavailable-1){
                 f[a]->round++;
+
             }else{
                 printf("\n\t1 : %s | 2 : %s\n\n", f[a]->name, f[a+1]->name);
                 printf(" >> Enter the number : ");
@@ -158,20 +159,19 @@ void worldCupHelper(food * f[] , int countavailable, int a){
                     temp--;
                 }
             }
-        }
+        }     
 
         food* winners[temp];
         int b=0;
         
-        for(int i = 0 ; i <temp ; i++){
-            if(f[i]->round==2){
+        for(int i = 0 ; i < countavailable ; i++){
+            if(f[i]->round==round+1){
                 winners[b] = f[i];
                 b++;
             }
         }
-        a++;
-
-        worldCupHelper(winners , temp , a);
+        round++;
+        worldCupHelper(winners , temp , round);
         
     }
 }
