@@ -36,7 +36,7 @@ int selectMenuTwo();
 int loadData(food *f[]);    //기존 메뉴판 불러오기
 void randomPick(food *f[], int count);       
 void worldCupPick(food *f[], int count);
-void worldCupHelper(food * f[] , int countavailable, int a)
+void worldCupHelper(food * f[] , int countavailable, int a);
 
 // Mode 3 functions - Seunghee
 int selectMenuThree();
