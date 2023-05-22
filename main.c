@@ -8,7 +8,6 @@
 int main(){
 
     int mode;
-    int t;          //food type
     int index;      //메뉴판 인덱스
     int myIndex = 0;    //장바구니 인덱스
     int memIndex;   //회원 인덱스
@@ -25,7 +24,8 @@ int main(){
 
     count = loadData(fo);
     index = count;    
-    
+        printf("hello");
+
     while(1){
 
         mode = selectMode(); 
@@ -166,7 +166,7 @@ int main(){
             }
         }
         
-        else if (mode == 4){
+        else if (mode == 0){
             break;
         }
 
