@@ -33,7 +33,7 @@ void saveData(food *f[], int count);
 
 // Mode 2 functions - Hyunjun
 int selectMenuTwo();
-int loadData(food *f[]);    //기존 메뉴판 불러오기
+int loadData(food *f);    //기존 메뉴판 불러오기
 void randomPick(food *f[], int count);       
 void worldCupPick(food *f[], int count);
 void worldCupHelper(food * f[] , int countavailable, int a);
@@ -43,11 +43,11 @@ int selectMenuThree();
 int loadMyFood(food *mf[]);
 void saveMyFood(food *mf[], int myCnt);
 int loadMemberData(member *m[]);
-int addMember(member *m, int buyCnt);
+int addMember(char search[30], member *m, int buyCnt);
 int countBuy(food *mf[], int myCnt);
 int Buy(food *mf[], int myCnt);
 void readMember(member m);
-int searchMember(member *f[], int memberCnt, int buyCnt);
+int searchMember(char search[30], member *f[], int memberCnt, int buyCnt);
 void saveMemberData(member *m[], int memberCnt);
 void worldCupHelper(food * f[] , int countavailable, int a);
 

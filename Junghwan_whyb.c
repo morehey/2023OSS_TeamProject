@@ -53,7 +53,11 @@ int addFood(food *f){   //정환
     printf(">> Price?: ");
     scanf("%d", &f->price);
 
+    f->cnt = 0;
+
     f->del = 1;
+
+    f->get = 0;
     
     printf(">> Menu has been successfully added! <<\n");
     
@@ -162,8 +166,8 @@ void saveData(food *f[], int count){//정환
     }
 
     for (int i = 0; i < count; i++) {
-        fprintf(file, "%s %d %d %d %d %d\n", 
-        f[i]->name, f[i]->type, f[i]->price, f[i]->cnt, f[i]->del, f[i]->get);
+        fprintf(file, "%d %d %d %d %d %s\n", 
+        f[i]->type, f[i]->price, f[i]->cnt, f[i]->del, f[i]->get, f[i]->name);
     }
 
     fclose(file);
