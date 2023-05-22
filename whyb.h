@@ -33,7 +33,7 @@ void saveData(food *f[], int count);
 
 // Mode 2 functions - Hyunjun
 int selectMenuTwo();
-int loadData(food *f);    //기존 메뉴판 불러오기
+int loadData(food *f[]);    //기존 메뉴판 불러오기
 void randomPick(food *f[], int count);       
 void worldCupPick(food *f[], int count);
 void worldCupHelper(food * f[] , int countavailable, int a);
