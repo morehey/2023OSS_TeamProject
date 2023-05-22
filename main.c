@@ -72,6 +72,7 @@ int main(){
                         printf("=> Deleted!\n");
                     }
                     else printf("=> Canceled!");
+                    index--;
                 }
                 else if (menu == 5){
                     searchName(fo, index);
