@@ -145,7 +145,7 @@ void searchName(food *f[], int count){//정환
 
     for(int i = 0; i < count; i++) {
 
-        if (f[i] == NULL) continue;
+        if (f[i]->del == 0) continue;
         else if (strcmp(f[i]->name, menuName) == 0) {
             printf("%d \t", i+1);
             readFood(*f[i]);
