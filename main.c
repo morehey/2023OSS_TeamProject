@@ -26,8 +26,7 @@ int main(){
     member *mem[MSIZE];
 
     count = loadData(fo);
-    count = 0;
-    index = 0;
+    index = count;
 
     while(1){
 
@@ -60,7 +59,7 @@ int main(){
                 else if (menu == 4){
                     int no = selectFoodNo(fo, index);
                     if (no == 0){
-                        printf("=> Cancled!\n");
+                        printf("=> Canceled!\n");
                         continue;
                     }
 
@@ -72,7 +71,7 @@ int main(){
                         count--;
                         printf("=> Deleted!\n");
                     }
-                    else printf("=> Cancled!");
+                    else printf("=> Canceled!");
                 }
                 else if (menu == 5){
                     searchName(fo, index);
@@ -107,15 +106,11 @@ int main(){
 
                         
             myCnt = 0;
-            memberCnt = 0;
-            memIndex = 0;
+            
 
 
             while (repeat) {
                 menu = selectMenuThree();
-
-                
-                
 
                 if (menu == 0) repeat = false;
                 else if (menu == 1){
@@ -142,7 +137,7 @@ int main(){
                 else if (menu == 5){
                     int no = selectFoodNo(myFo, myIndex);
                         if (no == 0){
-                            printf("=> Cancled!\n");
+                            printf("=> Canceled!\n");
                             continue;
                         }
 
@@ -163,6 +158,8 @@ int main(){
                     saveMyFood(myFo, myIndex);
                 }
                 else if (menu == 8){
+                    memberCnt = loadMember(mem);
+                    memIndex = memberCnt;
                     if (myCnt == 0){
                         printf("There is no Data\n");
                         printf("You should take one more menu\n");
@@ -177,7 +174,7 @@ int main(){
                         mem[memIndex] = (member *)malloc (sizeof(member));
                         memberCnt += addMember(search, mem[memIndex++], buyCnt);
                     }
-                    saveMemberData(mem, memberCnt);
+                    saveMemberData(mem, memIndex);
                 }
             }
         }

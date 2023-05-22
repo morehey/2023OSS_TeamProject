@@ -67,7 +67,6 @@ int addFood(food *f){   //정환
 
 void readFood(food f){//정환
     if (f.del == 0) {
-        printf("No data.");
         return;
     }
     else {
@@ -82,9 +81,12 @@ void listFood(food *f[], int count){//정환
     printf("\nnumber\t| Name\t\t   | Type | Price\t | Quantity\n");
     printf("------------------------------------------------------------------\n");
     for(int i = 0; i < count; i++){
-        if(f[i] == NULL) continue;
-        printf("%d \t", i+1);
-        readFood(*f[i]);
+        if(f[i]->del == 0) continue;
+        else{
+            printf("%d \t", i+1);
+            readFood(*f[i]);
+        }
+       
     }
     printf("\n");
 
@@ -137,8 +139,8 @@ void searchName(food *f[], int count){//정환
     printf("----------------------\n\n");
 
     printf(">> Enter the name of the menu: ");
-    fgets(menuName, SIZE, stdin);
-    menuName[strlen(menuName)-1] = '\0';
+    scanf("\n");
+    scanf("%[^\n]s", menuName);
     printf("\n");
 
     for(int i = 0; i < count; i++) {
@@ -166,6 +168,7 @@ void saveData(food *f[], int count){//정환
     }
 
     for (int i = 0; i < count; i++) {
+        if (f[i]->del == 0) continue;
         fprintf(file, "%d %d %d %d %d %s\n", 
         f[i]->type, f[i]->price, f[i]->cnt, f[i]->del, f[i]->get, f[i]->name);
     }
