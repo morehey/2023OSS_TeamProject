@@ -25,7 +25,7 @@ int main(){
     food *myFo[SIZE];
     member *mem[MSIZE];
 
-    //count = loadData(fo);
+    count = loadData(fo);
     count = 0;
     index = 0;
 
