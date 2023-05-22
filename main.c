@@ -24,7 +24,6 @@ int main(){
 
     count = loadData(fo);
     index = count;    
-        printf("hello");
 
     while(1){
 
