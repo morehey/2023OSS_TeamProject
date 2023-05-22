@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include "whyb.h"
+#define SIZE 100
+#define MSIZE 100
 
 int main(){
 
@@ -17,13 +19,15 @@ int main(){
     int buyCnt;     //장바구니 메뉴 개수 (삭제 된 것 제외)
     int memberCnt;  //회원들 수
     int memberIs;   //기존 회원인지 여부
+    char search[30];
 
     food *fo[SIZE];
     food *myFo[SIZE];
     member *mem[MSIZE];
 
-    count = loadData(fo);
-    index = count;    
+    //count = loadData(fo);
+    count = 0;
+    index = 0;
 
     while(1){
 
@@ -42,7 +46,7 @@ int main(){
                     else printf(">> No data <<\n");
                 }
                 else if (menu == 2){
-                    fo[index] = (food *)malloc(sizeof(food));
+                    fo[count] = (food *)malloc(sizeof(food));
                     count += addFood(fo[index++]);
                 }
                 else if (menu == 3){
@@ -97,9 +101,15 @@ int main(){
 
             bool repeat = true;
             
-            myCnt = loadMyFood(myFo);
-            memberCnt = loadMemberData(mem);
-            memIndex = memberCnt;
+            // myCnt = loadMyFood(myFo);
+            // memberCnt = loadMemberData(mem);
+            // memIndex = memberCnt;
+
+                        
+            myCnt = 0;
+            memberCnt = 0;
+            memIndex = 0;
+
 
             while (repeat) {
                 menu = selectMenuThree();
@@ -153,12 +163,19 @@ int main(){
                     saveMyFood(myFo, myIndex);
                 }
                 else if (menu == 8){
+                    if (myCnt == 0){
+                        printf("There is no Data\n");
+                        printf("You should take one more menu\n");
+                        continue;
+                    }
                     buyCnt = Buy(myFo, myCnt);
                     buyCnt = countBuy(myFo, myCnt);
-                    memberIs = searchMember(mem, memberCnt, buyCnt);
+                    printf(">> what is the userID of for the point? ");
+                    scanf("%s", search);
+                    memberIs = searchMember(search, mem, memberCnt, buyCnt);
                     if (memberIs == 1){
                         mem[memIndex] = (member *)malloc (sizeof(member));
-                        memberCnt += addMember(mem[memIndex++], buyCnt);
+                        memberCnt += addMember(search, mem[memIndex++], buyCnt);
                     }
                     saveMemberData(mem, memberCnt);
                 }

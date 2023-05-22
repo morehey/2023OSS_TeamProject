@@ -4,43 +4,24 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <unistd.h>
 #include "whyb.h"
 #include <time.h>
 
-int loadData(food *f[]){
-   const char* filename = "saved_menu_data.txt";
-    FILE* file = fopen(filename, "r");
-
-    if (file != NULL) {
-
-        int dataCount = 0;
-        char line[256];
-        while (fgets(line, sizeof(line), file) != NULL) {
-            scanf(line, "%s %d %d %d %d %d", 
-                   f[dataCount]->name,
-                   &f[dataCount]->type,
-                   &f[dataCount]->price,
-                   &f[dataCount]->cnt,
-                   &f[dataCount]->del,
-                   &f[dataCount]->get
-                   );
-
-            dataCount++;
-        }
-
-        fclose(file);
-
-        printf("data loaded\n");
-
-        // return data count
-        return dataCount;
-    } else {
-        printf("there is no data\n");
-
-        // return 0 because there is nodata
-        return 0;
-    }
-}
+// int loadData(food *f){
+//     int i = 0;
+//     FILE *fp;
+//     fp = fopen("saved_menu_data.txt", "rt");
+//     while(1){
+//         fscanf(fp, "%d", &f[i].type);
+//         if (feof(fp)) break;
+//         fscanf(fp, "%d %d %d %d %[^\n]s\n", &f[i].price, &f[i].cnt, &f[i].del, &f[i].get, f[i].name);
+//         i++;
+//     }
+//     if (i == 0 ) printf("there is no data\n");
+//     else printf("data loaded\n");
+//     return i;
+// }
 
 
 int selectMenuTwo(){
@@ -54,6 +35,7 @@ int selectMenuTwo(){
     printf("\t2 : pick by world cup \n" );
     printf("\t0 : quit ");
 
+    printf(">> Enter a number : ");
     scanf("%d", &num);
 
     return num;
@@ -67,6 +49,12 @@ void randomPick(food *f[], int count){
     int type;
     int num;
     int judge = 0;
+
+    if (count == 0){
+        printf("There is no Data :(");
+        return;
+    }
+
     srand(time(NULL));
 
     printf("\n\n\tWhy bother choose menu? We will choose for you!\n");

@@ -17,10 +17,10 @@ int selectMenuThree(){
     printf("\t4 : Update Menu In My Cart\n");
     printf("\t5 : Delete Menu In My Cart\n");
     printf("\t6 : Search Menu In My Cart\n");
-    printf("\t7 : Sava My Cart\n");
+    printf("\t7 : Save My Cart\n");
     printf("\t8 : Order And Earn Point\n\n");
     
-    printf(">> which menu do you want to start?");
+    printf(">> Enter a number : ");
 
     scanf("%d", &menu);
     printf("\n");
@@ -28,46 +28,41 @@ int selectMenuThree(){
     return menu;
 }
 
-int loadMyFood(food *mf[]){
-    const char* filename = "myFood_data.txt";
-    FILE* file = fopen(filename, "r");
+// int loadMyFood(food *mf[]){
+//     const char* filename = "myFood_data.txt";
+//     FILE* file = fopen(filename, "r");
 
-    if (file != NULL) {
+//     if (file != NULL) {
 
-        int myFoodCount = 0;
-        char line[256];
-        while (fgets(line, sizeof(line), file) != NULL) {
-            scanf(line, "9s %d %d %d", 
-                   mf[myFoodCount]->name,
-                   &mf[myFoodCount]->type,
-                   &mf[myFoodCount]->price,
-                   &mf[myFoodCount]->cnt
-                   );
+//         int myFoodCount = 0;
+//         char line[256];
+//         while (fgets(line, sizeof(line), file) != NULL) {
+//             scanf(line, "9s %d %d %d", 
+//                    mf[myFoodCount]->name,
+//                    &mf[myFoodCount]->type,
+//                    &mf[myFoodCount]->price,
+//                    &mf[myFoodCount]->cnt
+//                    );
 
-            myFoodCount++;
-        }
+//             myFoodCount++;
+//         }
 
-        fclose(file);
+//         fclose(file);
 
-        printf("data loaded\n");
-        return myFoodCount;
-    } else {
-        printf("there is no data\n");
-        return 0;
-    }
-    return 0;
-}
+//         printf("data loaded\n");
+//         return myFoodCount;
+//     } else {
+//         printf("there is no data\n");
+//         return 0;
+//     }
+//     return 0;
+// }
 
 void saveMyFood(food *f[], int myCnt){
 
     FILE *file;
 
-    file = fopen("myFood_data.txt", "w");
-
-    if (file == NULL) {
-        printf("Failed to open the file for writing.\n");
-        return;
-    }
+    file = fopen("myFood_data.txt", "wt");
 
     for (int i = 0; i < myCnt; i++) {
         fprintf(file, "%s %d %d %d\n", 
@@ -79,33 +74,33 @@ void saveMyFood(food *f[], int myCnt){
     printf("\n>> MyFood data saved to file successfully <<\n");
 }
 
-int loadMemberData(member *m[]){
-    const char* filename = "Member_data.txt";
-    FILE* file = fopen(filename, "r");
+// int loadMemberData(member *m[]){
+//     const char* filename = "Member_data.txt";
+//     FILE* file = fopen(filename, "r");
 
-    if (file != NULL) {
+//     if (file != NULL) {
 
-        int MemberCount = 0;
-        char line[256];
-        while (fgets(line, sizeof(line), file) != NULL) {
-            scanf(line, "9s %d %d %d", 
-                   m[MemberCount]->userID,
-                   &m[MemberCount]->point
-                   );
+//         int MemberCount = 0;
+//         char line[256];
+//         while (fgets(line, sizeof(line), file) != NULL) {
+//             scanf(line, "9s %d %d %d", 
+//                    m[MemberCount]->userID,
+//                    &m[MemberCount]->point
+//                    );
 
-            MemberCount++;
-        }
+//             MemberCount++;
+//         }
 
-        fclose(file);
+//         fclose(file);
 
-        printf("data loaded\n");
-        return MemberCount;
-    } else {
-        printf("there is no data\n");
-        return 0;
-    }
-    return 0;
-}
+//         printf("data loaded\n");
+//         return MemberCount;
+//     } else {
+//         printf("there is no data\n");
+//         return 0;
+//     }
+//     return 0;
+// }
 
 int countBuy(food *mf[], int myCnt){
     int totalCnt = 0;
@@ -127,7 +122,7 @@ int Buy(food *mf[], int myCnt){
         if (mf[i] -> del == 0 ) continue;
         else totalPrice+=mf[i]->price;
     }
-        printf(">> Total checkout is %d won <<",totalPrice);
+        printf(">> Total checkout is %d won <<\n",totalPrice);
 
 
     return totalPrice;
@@ -138,12 +133,8 @@ void readMember(member m){
     printf("%s %d", m.userID, m.point);
 }
 
-int searchMember(member *m[], int count, int buyCnt){
+int searchMember(char search[30], member *m[], int count, int buyCnt){
     int scnt = 0;
-    char search[20];
-
-    printf(">> what is the name of the member? ");
-    scanf("%s", search);
 
     printf("\nNo UserId Point\n");
     printf("===============================\n");
@@ -154,14 +145,15 @@ int searchMember(member *m[], int count, int buyCnt){
             break;
         }
     }
-    if (scnt == 0 ) printf(">> Not a valid user! <<");
+    if (scnt == 0 ) printf(">> Not a valid user!");
+    printf("\n I will add this ID <<");
     printf("\n");
+    return scnt;
 }
 
 
 
-int addMember(member *m, int buyCnt){
-    printf(">> What is you UserID? ");
+int addMember(char search[30], member *m, int buyCnt){
     scanf("%s", m->userID);
     m->point = 0;
     return 1;
